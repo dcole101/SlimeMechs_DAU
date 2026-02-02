@@ -29,3 +29,14 @@ public struct DirectionInfo
         this.offset = new Vector2Int(x, y);
     }
 }
+
+[System.Serializable]
+public class GenerationOptions
+{
+    public bool fillOpenSpaces;
+        public bool connectCrossroads;
+    public bool checkAdjacentTiles;
+    public bool pruneEdges;
+        public bool deadEndRemoval;
+
+}
