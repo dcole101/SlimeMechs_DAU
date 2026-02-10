@@ -46,6 +46,8 @@ namespace StarterAssets
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
+        public float AttackTimeout = 0.5f;
+
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
@@ -90,13 +92,16 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
+        private float _attackTimeoutDelta;
 
-        // animation IDs
         private int _animIDSpeed;
         private int _animIDGrounded;
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDAttack;
+
+        private bool _isAttacking;
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -150,16 +155,24 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+            _attackTimeoutDelta = AttackTimeout;
         }
 
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
             GroundedCheck();
-            Move();
+            JumpAndGravity();
+
+            if (!_isAttacking)
+            {
+                Move();
+            }
+
+            Attack();
         }
+
 
         private void LateUpdate()
         {
@@ -173,6 +186,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDAttack = Animator.StringToHash("Attack"); // Trigger
         }
 
         private void GroundedCheck()
@@ -302,6 +316,7 @@ namespace StarterAssets
                 // Jump
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
+                    Debug.Log("Input Jump");
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
@@ -388,5 +403,56 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+
+        private void Attack()
+        {
+            if (!Grounded) return;
+
+           
+            if (_input.attack && !_isAttacking)
+            {
+                Debug.Log("Input Attack");
+                _input.attack = false; // consume input
+                _isAttacking = true;
+
+                if (_hasAnimator)
+                {
+                    // make sure we have a clean trigger
+                    _animator.ResetTrigger(_animIDAttack);
+                    _animator.SetTrigger(_animIDAttack);
+                }
+                _isAttacking = false;
+                GetComponent<PlayerCombat>()?.OnAttackStarted();
+
+            }
+            _input.attack = false; _isAttacking = false;
+
+        }
+
+        //private void Attack()
+        //{
+        //    if (!Grounded || _isAttacking) return;
+
+        //    if (_input.attack)
+        //    {
+        //        Debug.Log("Input Attack");
+        //        _input.attack = false;
+        //        _isAttacking = true;
+
+        //        if (_hasAnimator)
+        //        {
+        //            _animator.ResetTrigger(_animIDAttack);
+        //            _animator.SetTrigger(_animIDAttack);
+        //        }
+
+        //        // Tell combat system attack started
+        //        GetComponent<PlayerCombat>()?.OnAttackStarted();
+        //    }
+        //}
+
+
+
     }
+
 }
+  

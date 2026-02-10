@@ -1,0 +1,43 @@
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+
+public class PlayerCombat : MonoBehaviour
+{
+    [Header("Attack Settings")]
+    public float attackDamage = 25f;
+    public Transform attackPoint;
+    public float attackRange = 2f;
+    public LayerMask enemyLayers;
+
+    private bool canDamage = false;
+
+    public void OnAttackStarted()  // Called from ThirdPersonController
+    {
+        Debug.Log("Attack Started Player");
+        canDamage = true;
+        Invoke(nameof(ResetDamage), 0.3f); 
+    }
+
+    public void DealDamage()  // Called by Animation Event at hit frame
+    {
+        Debug.Log("DealDamage Player");
+        //if (!canDamage) return;
+
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers, QueryTriggerInteraction.Collide);
+        foreach (Collider enemy in hitEnemies)
+        {
+           
+            EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
+            enemyAi?.EnemyTakesDamage((int)attackDamage);
+            Debug.Log("Enemy ai take damage called");
+        }
+    }
+
+    private void ResetDamage()
+    {
+        canDamage = false;
+    }
+}
