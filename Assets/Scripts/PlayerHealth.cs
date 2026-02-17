@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public Transform respawnPoint;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -24,7 +26,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         onTakeDamage?.Invoke();
 
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+            Die();
 
         healthBar.SetHealth(currentHealth);
     }
@@ -33,6 +36,15 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Player died");
         //onDeath?.Invoke();
-       
+
+        // Respawn at origin or respawnPoint
+        if (respawnPoint != null)
+            transform.position = respawnPoint.position;
+        else
+            transform.position = Vector3.zero;
+
+        // Reset health to full
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
     }
 }
