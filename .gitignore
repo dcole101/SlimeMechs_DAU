@@ -29,6 +29,7 @@
 /[Aa]ssets/TRAIBAG/*
 /[Aa]ssets/Cartoon Shader/*
 /[Aa]ssets/JMO Assets/Cartoon FX Remaster/*
+/[Aa]ssets/TextMesh Pro/*
 
 # Visual Studio cache directory
 .vs/

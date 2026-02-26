@@ -5,41 +5,36 @@ using System.Collections.Generic;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
+    [Header("Radial Fill")]
+    public Image fill;  // Assign the Image (child of a background circle sprite)
+
+    [Header("Colors")]
     public Gradient gradient;
-    public Image fill;
+
+    private int maxHealth;
 
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
-
-        gradient.Evaluate(1f);
+        maxHealth = health;
+        SetHealth(health);
     }
-
-
-
 
     public void SetHealth(int health)
     {
-        slider.value = health;
-
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        float normalizedValue = (float)health / maxHealth;
+        fill.fillAmount = normalizedValue;  // Drives radial fill (0=empty, 1=full)
+        fill.color = gradient.Evaluate(normalizedValue);
     }
 
-    //billboard stuff
+    // Billboard stuff
     public Transform cam;
     public bool isWorldSpace;
 
     void LateUpdate()
     {
-        if(isWorldSpace)
+        if (isWorldSpace)
         {
             transform.LookAt(transform.position + cam.forward);
         }
-       
     }
-    
- 
-    
 }

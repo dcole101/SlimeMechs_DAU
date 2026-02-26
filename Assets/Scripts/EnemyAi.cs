@@ -66,29 +66,47 @@ public class EnemyAi : MonoBehaviour
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
-        }
 
-        Vector3 distancetoWalkPoint = transform.position - walkPoint;
+            Vector3 distancetoWalkPoint = transform.position - walkPoint;
 
-        // Walk point reached
-        if (distancetoWalkPoint.magnitude < 1f)
-        {
-            walkPointSet = false;
+            // Walk point reached OR agent is stuck (no path)
+            if (distancetoWalkPoint.magnitude < 1f || !agent.hasPath)
+            {
+                walkPointSet = false;
+            }
         }
     }
+
 
     private void SearchWalkPoint()
     {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        float randomY = Random.Range(-walkPointRange, walkPointRange);
+        // Try up to 30 times to find a valid NavMesh point
+        for (int i = 0; i < 30; i++)
+        {
+            float randomZ = Random.Range(-walkPointRange, walkPointRange);
+            float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y + randomY, transform.position.z + randomZ);
+            Vector3 randomPoint = new Vector3(
+                transform.position.x + randomX,
+                transform.position.y,
+                transform.position.z + randomZ
+            );
 
-        // Actually on ground?
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatGround))
-            walkPointSet = true;
+            NavMeshHit hit;
+            // SamplePosition finds the *closest valid NavMesh position* within maxDistance (10f)
+            if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
+            {
+                walkPoint = hit.position;
+                walkPointSet = true;
+                return; // Found a valid point!
+            }
+        }
+
+        // Fallback: if no valid point found, stay put
+        walkPointSet = false;
+        Debug.LogWarning("No valid walk point found within range!");
     }
+
 
     private void ChasePlayer()
     {

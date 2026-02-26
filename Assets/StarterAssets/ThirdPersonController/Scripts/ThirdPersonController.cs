@@ -103,6 +103,7 @@ namespace StarterAssets
 
         private bool _isAttacking;
 
+
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
@@ -421,6 +422,15 @@ namespace StarterAssets
                     _animator.ResetTrigger(_animIDAttack);
                     _animator.SetTrigger(_animIDAttack);
                 }
+                ////maybe using timer
+                //if (_isAttacking)
+                //{
+                //    _attackTimeoutDelta -= Time.deltaTime;
+                //    if (_attackTimeoutDelta <= 0f)
+                //    {
+                //        _isAttacking = false;
+                //    }
+                //}
                 _isAttacking = false;
                 GetComponent<PlayerCombat>()?.OnAttackStarted();
 
@@ -428,29 +438,6 @@ namespace StarterAssets
             _input.attack = false; _isAttacking = false;
 
         }
-
-        //private void Attack()
-        //{
-        //    if (!Grounded || _isAttacking) return;
-
-        //    if (_input.attack)
-        //    {
-        //        Debug.Log("Input Attack");
-        //        _input.attack = false;
-        //        _isAttacking = true;
-
-        //        if (_hasAnimator)
-        //        {
-        //            _animator.ResetTrigger(_animIDAttack);
-        //            _animator.SetTrigger(_animIDAttack);
-        //        }
-
-        //        // Tell combat system attack started
-        //        GetComponent<PlayerCombat>()?.OnAttackStarted();
-        //    }
-        //}
-
-
 
     }
 

@@ -11,13 +11,21 @@ public class PlayerHealth : MonoBehaviour
     public UnityEvent onTakeDamage, onDeath;
 
     public HealthBar healthBar;
-
     public Transform respawnPoint;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+    }
+
+    void Update()
+    {
+        // Press H to heal to full health
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            SelfHeal();
+        }
     }
 
     public void TakePlayerDamage(int damage)
@@ -46,5 +54,12 @@ public class PlayerHealth : MonoBehaviour
         // Reset health to full
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
+    }
+
+    public void SelfHeal()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
+        Debug.Log("Player healed to full health with H key");
     }
 }
