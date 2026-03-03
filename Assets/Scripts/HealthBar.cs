@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 public class HealthBar : MonoBehaviour
 {
-    [Header("Radial Fill")]
-    public Image fill;  // Assign the Image (child of a background circle sprite)
+   
+    public Image fill;  
 
     [Header("Colors")]
     public Gradient gradient;
@@ -21,10 +21,15 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(int health)
     {
-        float normalizedValue = (float)health / maxHealth;
-        fill.fillAmount = normalizedValue;  // Drives radial fill (0=empty, 1=full)
+        if (maxHealth <= 0) return;  // Prevent div by zero
+
+        float normalizedValue = Mathf.Clamp01((float)health / maxHealth);
+        fill.fillAmount = normalizedValue;
         fill.color = gradient.Evaluate(normalizedValue);
+    
     }
+
+
 
     // Billboard stuff
     public Transform cam;

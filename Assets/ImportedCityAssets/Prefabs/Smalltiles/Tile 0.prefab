@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92dbbf0d845e734d85d03254cc36058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
-  blockprefab: {fileID: 8727374875326372032, guid: d33e8585f7bd7a24097e863eca3e8d67, type: 3}
+  blockprefab: {fileID: 8727374875326372032, guid: c0d6e9a25ce03f345b69abdaaf13130a, type: 3}
   isDebugging: 0
 --- !u!1001 &251585126685259829
 PrefabInstance:

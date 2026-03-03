@@ -14,6 +14,7 @@ public class EnemyAi : MonoBehaviour
 
     public int health;
     public HealthBar healthBar;
+    public int maxHealth;
 
     // Patrolling
     public Vector3 walkPoint;
@@ -28,16 +29,29 @@ public class EnemyAi : MonoBehaviour
     // States
     public float sightRange, attackRange;
 
-    // New: how far before we give up chasing/attacking
     public float loseInterestRange = 30f;
 
     public bool playerInSightRange, playerInAttackRange;
+
+
+    [SerializeField] private Transform firePoint;
 
     private void Awake()
     {
         player = playerObj.transform;
         agent = GetComponent<NavMeshAgent>();
     }
+
+    void Start()
+    {
+        health = maxHealth;
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+            healthBar.SetHealth(health);
+        }
+    }
+
 
     private void Update()
     {
@@ -116,14 +130,13 @@ public class EnemyAi : MonoBehaviour
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
-
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
-            // Attacking!!
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Vector3 spawnPos = firePoint ? firePoint.position : transform.position + transform.up * 1.5f;
+            Rigidbody rb = Instantiate(projectile, spawnPos, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse); 
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);

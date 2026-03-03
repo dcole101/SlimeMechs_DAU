@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class PlayerCombat : MonoBehaviour
 {
     [Header("Attack Settings")]
-    public float attackDamage = 25f;
+    public int attackDamage = 25;
     public Transform attackPoint;
     public float attackRange = 2f;
     public LayerMask enemyLayers;
@@ -31,7 +31,12 @@ public class PlayerCombat : MonoBehaviour
         {
            
             EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
-            enemyAi?.EnemyTakesDamage((int)attackDamage);
+            enemyAi?.EnemyTakesDamage(attackDamage);
+
+
+            BossHealth bossHealth = enemy.GetComponent<BossHealth>();
+            bossHealth?.TakeDamage(attackDamage); 
+
             Debug.Log("Enemy ai take damage called");
         }
     }
