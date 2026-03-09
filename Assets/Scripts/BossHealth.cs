@@ -4,7 +4,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine.AI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
+
+//Same as normal enemy health but different debug logs
 public class BossHealth : MonoBehaviour
 {
    
@@ -41,6 +44,9 @@ public class BossHealth : MonoBehaviour
     {
        
         Debug.Log("Boss defeated!");
-        Destroy(gameObject, 0.5f); 
+        Destroy(gameObject, 0.5f);
+       
+            SceneManager.LoadScene("EndScreen");
+        
     }
 }

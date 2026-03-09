@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Optional: index or name of your main gameplay scene
-    [Header("Scenes")]
+   
+    
     public int gameSceneBuildIndex = 1;
 
     public GameObject levelSelectScreen;
@@ -51,6 +51,11 @@ public class MainMenuManager : MonoBehaviour
     {
         levelSelectScreen.SetActive(true);
         LogoScreen.SetActive(false);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     IEnumerator LoadYourAsyncScene()

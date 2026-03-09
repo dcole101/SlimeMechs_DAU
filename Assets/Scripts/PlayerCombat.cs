@@ -14,17 +14,17 @@ public class PlayerCombat : MonoBehaviour
 
     private bool canDamage = false;
 
-    public void OnAttackStarted()  // Called from ThirdPersonController
+    public void OnAttackStarted() 
     {
         Debug.Log("Attack Started Player");
         canDamage = true;
         Invoke(nameof(ResetDamage), 0.3f); 
     }
 
-    public void DealDamage()  // Called by Animation Event at hit frame
+    public void DealDamage()  // Called at hit frame
     {
         Debug.Log("DealDamage Player");
-        //if (!canDamage) return;
+   
 
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers, QueryTriggerInteraction.Collide);
         foreach (Collider enemy in hitEnemies)

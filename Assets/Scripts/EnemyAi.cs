@@ -61,7 +61,6 @@ public class EnemyAi : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // If player is too far, stop any chasing/attacking and go back to patrol
         if (distanceToPlayer > loseInterestRange)
         {
             Patrolling();
@@ -83,7 +82,6 @@ public class EnemyAi : MonoBehaviour
 
             Vector3 distancetoWalkPoint = transform.position - walkPoint;
 
-            // Walk point reached OR agent is stuck (no path)
             if (distancetoWalkPoint.magnitude < 1f || !agent.hasPath)
             {
                 walkPointSet = false;
@@ -107,7 +105,7 @@ public class EnemyAi : MonoBehaviour
             );
 
             NavMeshHit hit;
-            // SamplePosition finds the *closest valid NavMesh position* within maxDistance (10f)
+         
             if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
             {
                 walkPoint = hit.position;
@@ -116,7 +114,7 @@ public class EnemyAi : MonoBehaviour
             }
         }
 
-        // Fallback: if no valid point found, stay put
+       
         walkPointSet = false;
         Debug.LogWarning("No valid walk point found within range!");
     }

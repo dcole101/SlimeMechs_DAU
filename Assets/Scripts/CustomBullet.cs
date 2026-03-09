@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CustomBullet : MonoBehaviour
 {
-    // Assignables
+    // based off custom bullet youtube video (part of Navmesh Enemies)
     public Rigidbody rb;
     public GameObject explosion;
-    public LayerMask whatIsPlayer;   // was whatIsEnemies
+    public LayerMask whatIsPlayer;
 
     // Stats
     [Range(0f, 1f)]
@@ -42,7 +42,7 @@ public class CustomBullet : MonoBehaviour
 
     private void Explode()
     {
-        // Instantiate explosion
+      
         if (explosion != null)
             Instantiate(explosion, transform.position, Quaternion.identity);
 
@@ -64,7 +64,7 @@ public class CustomBullet : MonoBehaviour
             }
         }
 
-        // Small delay before destroy
+       
         Invoke(nameof(Delay), 0.05f);
     }
 
@@ -75,13 +75,12 @@ public class CustomBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Don't count collisions with other bullets
+      
         if (collision.collider.CompareTag("Bullet")) return;
 
-        // Count up collisions
         collisions++;
 
-        // Direct hit on player
+    
         if (collision.collider.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.collider.GetComponent<PlayerHealth>();
@@ -97,7 +96,7 @@ public class CustomBullet : MonoBehaviour
         }
         else
         {
-            // Other surfaces: optionally explode on touch too
+            
             if (explodeOnTouch)
             {
                 Explode();
@@ -107,7 +106,7 @@ public class CustomBullet : MonoBehaviour
 
     private void Setup()
     {
-        // Create a new Physic material
+        
         physics_mat = new PhysicsMaterial
         {
             bounciness = bounciness,
@@ -115,14 +114,12 @@ public class CustomBullet : MonoBehaviour
             bounceCombine = PhysicsMaterialCombine.Maximum
         };
 
-        // Assign material to collider
         GetComponent<SphereCollider>().material = physics_mat;
 
-        // Set gravity
         rb.useGravity = useGravity;
     }
 
-    // Just to visualize the explosion range
+   
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

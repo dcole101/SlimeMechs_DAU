@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.AI;
 using System.Collections.Generic;
 
-
+// countdown timer and then the boss spawns after the timer is done
 public class BossSpawn : MonoBehaviour
 {
     [Header("Spawn Settings")]
@@ -20,10 +20,13 @@ public class BossSpawn : MonoBehaviour
 
     public TMP_Text countdownText;
 
+    //MUSIC
+    public AudioSource musicSource;
+    public AudioClip bossMusicTrack;
+
     void Start()
     {
 
-        // Timer init
         timeRemaining = spawnTimer;
         UpdateCountdownUI(timeRemaining);
 
@@ -45,6 +48,7 @@ public class BossSpawn : MonoBehaviour
     IEnumerator SpawnBossSequence()
     {
         yield return new WaitForSeconds(spawnTimer);
+        SwitchToBossMusic();
 
         bossInstance = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
         bossSpawned = true;
@@ -64,6 +68,21 @@ public class BossSpawn : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60f);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60f);
         countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    void SwitchToBossMusic()
+    {
+        if (musicSource != null && bossMusicTrack != null)
+        {
+            musicSource.Stop();
+            musicSource.clip = bossMusicTrack;
+            musicSource.Play();
+            Debug.Log("Boss music started!");
+        }
+        else
+        {
+            Debug.LogWarning("Boss music error");
+        }
     }
 
 }

@@ -114,14 +114,14 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
-    - _Cutoff: 0.163
+    - _Cutoff: 1
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Distortion_Speed: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _EmissScrollSpeed: 0
-    - _EmissionIntensity: 0.63
+    - _EmissionIntensity: 0.57
     - _EmissiveIntensity: 1.94
     - _EnvironmentReflections: 1
     - _GlossMapScale: 1
@@ -155,7 +155,7 @@ Material:
     - _RimStep: 0.781
     - _RimStepSmooth: 0.141
     - _Scrolling_Speed: 0.1
-    - _ShadowStep: 0.442
+    - _ShadowStep: 0.309
     - _ShadowStepSmooth: 0.062
     - _Smoothness: 0.431
     - _SmoothnessTextureChannel: 0
