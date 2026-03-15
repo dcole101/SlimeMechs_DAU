@@ -6502,7 +6502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossSpawn
   bossPrefab: {fileID: 4269460504501279484, guid: a4eb180a1c26cff49bd16d888c97fa50, type: 3}
   spawnPosition: {x: 20.2, y: 0, z: 19.9}
-  spawnTimer: 10
+  spawnTimer: 50
   countdownText: {fileID: 1038727383}
   musicSource: {fileID: 97024379}
   bossMusicTrack: {fileID: 8300000, guid: 012ee6dd2d4c2ac4fbc7d1de98bb5c50, type: 3}
