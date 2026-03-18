@@ -34,10 +34,10 @@ public class TileManager : MonoBehaviour
 
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //}
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 

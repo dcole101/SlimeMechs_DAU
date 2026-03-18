@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7120203059075792688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2493699499742100459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 703549912828195675}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Awnings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,9 +114,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3409284454461892415}
   - component: {fileID: -6602466661096659787}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Comm_withbox
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7046328212825039357}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2544560278645951709}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5072992004409327943}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire Escape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,6 +325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Window Long (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -386,6 +390,10 @@ PrefabInstance:
     - target: {fileID: 7088245637927219850, guid: 69f5d79d14995b644ac321988cb9211a, type: 3}
       propertyPath: m_Name
       value: Awning Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 7088245637927219850, guid: 69f5d79d14995b644ac321988cb9211a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -449,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7088245637927219850, guid: 69f5d79d14995b644ac321988cb9211a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -511,6 +523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -532,6 +548,10 @@ PrefabInstance:
     - target: {fileID: 3566058787721421883, guid: 0bc302ab18fd42a4e8c0cccb70300c3e, type: 3}
       propertyPath: m_Name
       value: Rooftop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566058787721421883, guid: 0bc302ab18fd42a4e8c0cccb70300c3e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9221019066801212447, guid: 0bc302ab18fd42a4e8c0cccb70300c3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -594,6 +614,10 @@ PrefabInstance:
     - target: {fileID: 1499267463231060638, guid: 9c18afb84933f2e44a9b463d28f66eda, type: 3}
       propertyPath: m_Name
       value: Upper Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499267463231060638, guid: 9c18afb84933f2e44a9b463d28f66eda, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7925906510503170754, guid: 9c18afb84933f2e44a9b463d28f66eda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -697,6 +721,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upper Floor 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7466174630675058197, guid: 856f799107e413d4a8c8eddce395b1ca, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -758,6 +786,10 @@ PrefabInstance:
     - target: {fileID: 7454358945713618955, guid: 725231697d46784458f5bbdbeb424d11, type: 3}
       propertyPath: m_Name
       value: Box Sign (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454358945713618955, guid: 725231697d46784458f5bbdbeb424d11, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -821,6 +853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Floor 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7962945756010601864, guid: 89021ca5e68f9e14998732195c10a42a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -883,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Window Long
       objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -904,6 +944,10 @@ PrefabInstance:
     - target: {fileID: 3673919061414370903, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
       propertyPath: m_Name
       value: Air Con 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673919061414370903, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7974785436071349524, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
       propertyPath: m_LocalPosition.x
@@ -944,6 +988,14 @@ PrefabInstance:
     - target: {fileID: 7974785436071349524, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133992195330821046, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557210626320343172, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1007,6 +1059,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1069,6 +1125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1087,6 +1147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7046328212825039357}
     m_Modifications:
+    - target: {fileID: 596453639450402102, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7229088846652908291, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -1127,9 +1191,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9031055142631173516, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_Name
       value: Air Con 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1189,9 +1261,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 756511574898787005, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8402767109947877705, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
       propertyPath: m_Name
       value: Air Con 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402767109947877705, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058307947732939676, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1255,6 +1339,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upper Floor 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7466174630675058197, guid: 856f799107e413d4a8c8eddce395b1ca, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1316,6 +1404,10 @@ PrefabInstance:
     - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
       propertyPath: m_Name
       value: Awning Window Long (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1379,6 +1471,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7088245637927219850, guid: 69f5d79d14995b644ac321988cb9211a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1440,6 +1536,10 @@ PrefabInstance:
     - target: {fileID: 8309442728278769775, guid: d8c7587b0ba6a2347a2e26e47c62620d, type: 3}
       propertyPath: m_Name
       value: Upper Floor 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309442728278769775, guid: d8c7587b0ba6a2347a2e26e47c62620d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1503,6 +1603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1564,6 +1668,10 @@ PrefabInstance:
     - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
       propertyPath: m_Name
       value: Awning Window Long
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1627,6 +1735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upper Floor 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1313360571212548533, guid: 1ceb9c3c5b11c2f46813e109a5f37b87, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1688,6 +1800,10 @@ PrefabInstance:
     - target: {fileID: 7454358945713618955, guid: 725231697d46784458f5bbdbeb424d11, type: 3}
       propertyPath: m_Name
       value: Box Sign (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454358945713618955, guid: 725231697d46784458f5bbdbeb424d11, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1751,6 +1867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Door
       objectReference: {fileID: 0}
+    - target: {fileID: 7088245637927219850, guid: 69f5d79d14995b644ac321988cb9211a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1812,6 +1932,10 @@ PrefabInstance:
     - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
       propertyPath: m_Name
       value: Awning Window Long (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1875,6 +1999,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Window Long
       objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1937,6 +2065,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Awning Window Long (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3260730480346077807, guid: 298ed277805c31343af989f78ccb7268, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1998,6 +2130,10 @@ PrefabInstance:
     - target: {fileID: 7454358945713618955, guid: 725231697d46784458f5bbdbeb424d11, type: 3}
       propertyPath: m_Name
       value: Box Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454358945713618955, guid: 725231697d46784458f5bbdbeb424d11, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

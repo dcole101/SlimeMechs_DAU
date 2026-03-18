@@ -103,6 +103,18 @@ namespace StarterAssets
 
         private bool _isAttacking;
 
+        //NEW COMBOS
+
+        [Header("Combo")]
+        public float ComboResetDelay = 1f;
+
+        private int _comboClicks = 0;
+        private float _lastComboClickTime;
+        private int _animIDHit1;
+        private int _animIDHit2;
+        private int _animIDHit3;
+
+
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -175,6 +187,7 @@ namespace StarterAssets
         }
 
 
+
         private void LateUpdate()
         {
             CameraRotation();
@@ -187,8 +200,13 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-            _animIDAttack = Animator.StringToHash("Attack"); // Trigger
+            _animIDAttack = Animator.StringToHash("Attack"); // optional, can be unused
+
+            _animIDHit1 = Animator.StringToHash("Hit1");
+            _animIDHit2 = Animator.StringToHash("Hit2");
+            _animIDHit3 = Animator.StringToHash("Hit3");
         }
+
 
         private void GroundedCheck()
         {
@@ -407,37 +425,100 @@ namespace StarterAssets
 
         private void Attack()
         {
+            if (!_hasAnimator) return;
             if (!Grounded) return;
 
-           
-            if (_input.attack && !_isAttacking)
+            // Reset combo if too slow
+            if (Time.time - _lastComboClickTime > ComboResetDelay)
             {
-                Debug.Log("Input Attack");
-                _input.attack = false; // consume input
-                _isAttacking = true;
-
-                if (_hasAnimator)
-                {
-                    // make sure we have a clean trigger
-                    _animator.ResetTrigger(_animIDAttack);
-                    _animator.SetTrigger(_animIDAttack);
-                }
-                ////maybe using timer
-                //if (_isAttacking)
-                //{
-                //    _attackTimeoutDelta -= Time.deltaTime;
-                //    if (_attackTimeoutDelta <= 0f)
-                //    {
-                //        _isAttacking = false;
-                //    }
-                //}
-                _isAttacking = false;
-                GetComponent<PlayerCombat>()?.OnAttackStarted();
-
+                _comboClicks = 0;
+                _animator.SetBool(_animIDHit1, false);
+                _animator.SetBool(_animIDHit2, false);
+                _animator.SetBool(_animIDHit3, false);
             }
-            _input.attack = false; _isAttacking = false;
 
+            // Read and consume attack input
+            if (_input.attack)
+            {
+                _input.attack = false;
+                _lastComboClickTime = Time.time;
+                _comboClicks++;
+                _comboClicks = Mathf.Clamp(_comboClicks, 0, 3);
+
+                TryStartCombo();
+            }
+
+            UpdateComboChain();
         }
+
+        //COMBOS EXTRAS
+
+        private void TryStartCombo()
+        {
+            // If we aren't in any hit state, start the combo with Hit1
+            var state = _animator.GetCurrentAnimatorStateInfo(0);
+
+            bool inHitState = state.IsName("Hit1") || state.IsName("Hit2") || state.IsName("Hit3");
+
+            if (!inHitState && _comboClicks >= 1)
+            {
+                _animator.SetBool(_animIDHit1, true);
+                _isAttacking = true;
+                GetComponent<PlayerCombat>()?.OnAttackStarted();
+            }
+        }
+
+        private void UpdateComboChain()
+        {
+            var state = _animator.GetCurrentAnimatorStateInfo(0);
+            float t = state.normalizedTime;
+
+            // Move to Hit2
+            if (state.IsName("Hit1"))
+            {
+                // Turn off Hit1 after most of the anim has played
+                if (t > 0.7f)
+                {
+                    _animator.SetBool(_animIDHit1, false);
+                }
+
+                // Go to Hit2 if we clicked at least twice
+                if (_comboClicks >= 2 && t > 0.7f)
+                {
+                    _animator.SetBool(_animIDHit2, true);
+                }
+            }
+            // Move to Hit3
+            else if (state.IsName("Hit2"))
+            {
+                if (t > 0.7f)
+                {
+                    _animator.SetBool(_animIDHit2, false);
+                }
+
+                if (_comboClicks >= 3 && t > 0.7f)
+                {
+                    _animator.SetBool(_animIDHit3, true);
+                }
+            }
+            // End of combo on Hit3
+            else if (state.IsName("Hit3"))
+            {
+                if (t > 0.7f)
+                {
+                    _animator.SetBool(_animIDHit3, false);
+                    _comboClicks = 0;
+                    _isAttacking = false;
+                }
+            }
+            else
+            {
+                // Not in an attack state anymore
+                _isAttacking = false;
+            }
+        }
+
+
 
     }
 

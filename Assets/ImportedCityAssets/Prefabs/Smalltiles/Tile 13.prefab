@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9162243283144705079}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92dbbf0d845e734d85d03254cc36058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
-  blockprefab: {fileID: 3167272615972035753, guid: aaf0f13b57be08b4281dce0c7e32cf0f, type: 3}
+  blockprefab: {fileID: 2270769311321732851, guid: a97b44e483e173f4abae4d049ec716ce, type: 3}
   isDebugging: 0
 --- !u!1 &7764285138144730061
 GameObject:
@@ -111,6 +111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9162243283144705079}
     m_Modifications:
+    - target: {fileID: 3207251274419903050, guid: 049a1931eaf50e64e924873fe59b181e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5494877852205833101, guid: ff10e8038f183154b85965726582a89e, type: 3}
     - target: {fileID: 7258034393804269873, guid: 049a1931eaf50e64e924873fe59b181e, type: 3}
       propertyPath: m_Name
       value: Vacant Lot 1
@@ -297,6 +301,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9162243283144705079}
     m_Modifications:
+    - target: {fileID: 1740105528829303213, guid: 63a654f98af75bc4c8f24b31904a91f6, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5494877852205833101, guid: ff10e8038f183154b85965726582a89e, type: 3}
     - target: {fileID: 4137918112188911776, guid: 63a654f98af75bc4c8f24b31904a91f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20

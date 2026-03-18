@@ -6,17 +6,43 @@ using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("Health")]
     public int maxHealth = 100;
     public int currentHealth;
     public UnityEvent onTakeDamage, onDeath;
 
+    [Header("UI")]
     public HealthBar healthBar;
+
+    [Header("Respawn")]
     public Transform respawnPoint;
+
+    [Header("Animation")]
+    public Animator animator;
+    private int _takeHitTriggerID;
+    private int _dieTriggerID;
+
+
+    private int _hitTriggerID;
+    private bool _isDead;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>();
+
+        AssignAnimationIDs();
+    }
+
+    private void AssignAnimationIDs()
+    {
+        if (animator == null) return;
+
+        _takeHitTriggerID = Animator.StringToHash("TakeHit");
+        _dieTriggerID = Animator.StringToHash("Die");
     }
 
     void Update()
@@ -30,20 +56,57 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakePlayerDamage(int damage)
     {
+        if (_isDead) return;
+
         Debug.Log("TakeDamage Player");
         currentHealth -= damage;
         onTakeDamage?.Invoke();
 
+        // Play damage animation
+
+        if (animator != null)
+        {
+            animator.ResetTrigger(_takeHitTriggerID);
+            animator.SetTrigger(_takeHitTriggerID);
+
+            Debug.Log("Playhit animation called");
+        }
+       
+
         if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            healthBar.SetHealth(currentHealth);
             Die();
+            return;
+        }
 
         healthBar.SetHealth(currentHealth);
     }
 
     void Die()
     {
+        if (_isDead) return;
+        _isDead = true;
+
         Debug.Log("Player died");
-        //onDeath?.Invoke();
+        onDeath?.Invoke();
+
+        // Play death animation
+        if (animator != null)
+        {
+            animator.ResetTrigger(_hitTriggerID);
+            animator.ResetTrigger(_dieTriggerID);
+            animator.SetTrigger(_dieTriggerID);
+        }
+
+       
+    }
+
+    // Animation Event - Call this from your Die animation clip
+    public void OnDeathAnimationFinished()
+    {
+        if (!_isDead) return;
 
         // Respawn at origin or respawnPoint
         if (respawnPoint != null)
@@ -54,10 +117,24 @@ public class PlayerHealth : MonoBehaviour
         // Reset health to full
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
+
+        // Reset animator to idle state
+        if (animator != null)
+        {
+            animator.ResetTrigger(_dieTriggerID);
+            animator.Play("Idle Walk Run Blend", 0, 0f); 
+        }
+
+        _isDead = false;
+
+        // Re-enable player controller here if you disabled it:
+        // GetComponent<ThirdPersonController>()?.enabled = true;
     }
 
     public void SelfHeal()
     {
+        if (_isDead) return;
+
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
         Debug.Log("Player healed to full health with H key");

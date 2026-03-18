@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3173623758167309501}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Air Conditioners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5949973550959631940}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fire Escape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5545143960550486415}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6479720763136952301}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,9 +148,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1073649331527698877}
   - component: {fileID: 1046389247142725469}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CommC_withbox
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -266,6 +270,10 @@ PrefabInstance:
     - target: {fileID: 2951845930798423715, guid: e91ba8fee0723864db9b0295fc5c60b0, type: 3}
       propertyPath: m_Name
       value: Ground Floor 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951845930798423715, guid: e91ba8fee0723864db9b0295fc5c60b0, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5824128793589382964, guid: e91ba8fee0723864db9b0295fc5c60b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,6 +377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upper Floor 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7466174630675058197, guid: 856f799107e413d4a8c8eddce395b1ca, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -390,6 +402,10 @@ PrefabInstance:
     - target: {fileID: 4496871206219739313, guid: 7354f8d8c22058c4bb3012b5a15d897b, type: 3}
       propertyPath: m_Name
       value: Water Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496871206219739313, guid: 7354f8d8c22058c4bb3012b5a15d897b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7997451846877733191, guid: 7354f8d8c22058c4bb3012b5a15d897b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,6 +469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rooftop
       objectReference: {fileID: 0}
+    - target: {fileID: 3566058787721421883, guid: 0bc302ab18fd42a4e8c0cccb70300c3e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9221019066801212447, guid: 0bc302ab18fd42a4e8c0cccb70300c3e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -514,6 +534,10 @@ PrefabInstance:
     - target: {fileID: 1499267463231060638, guid: 9c18afb84933f2e44a9b463d28f66eda, type: 3}
       propertyPath: m_Name
       value: Upper Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 1499267463231060638, guid: 9c18afb84933f2e44a9b463d28f66eda, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7925906510503170754, guid: 9c18afb84933f2e44a9b463d28f66eda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -613,9 +637,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 756511574898787005, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8402767109947877705, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
       propertyPath: m_Name
       value: Air Con 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402767109947877705, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058307947732939676, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -679,6 +715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -700,6 +740,10 @@ PrefabInstance:
     - target: {fileID: 7554490263331773777, guid: d4a126146774ed7409111e639e065b2a, type: 3}
       propertyPath: m_Name
       value: Upper Floor 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554490263331773777, guid: d4a126146774ed7409111e639e065b2a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8559543033818840894, guid: d4a126146774ed7409111e639e065b2a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -803,6 +847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Escape
       objectReference: {fileID: 0}
+    - target: {fileID: 6259632600334143478, guid: 5950fef37c553fa46b9e367585495060, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -865,6 +913,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upper Floor 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7466174630675058197, guid: 856f799107e413d4a8c8eddce395b1ca, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -883,6 +935,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3173623758167309501}
     m_Modifications:
+    - target: {fileID: 596453639450402102, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7229088846652908291, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.63
@@ -923,9 +979,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9031055142631173516, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_Name
       value: Air Con 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
