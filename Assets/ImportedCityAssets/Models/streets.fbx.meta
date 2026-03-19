@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Color Atlas
-    second: {fileID: -1001169874661244854, guid: d69daf980bacb054baaa7095b5b9f17b, type: 3}
+    second: {fileID: 2100000, guid: 7d8c66fbe1246d24281a7e1ed8efdc3d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 1

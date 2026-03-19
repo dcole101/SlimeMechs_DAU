@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9162243283144705079}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
   blockprefab: {fileID: 2270769311321732851, guid: a97b44e483e173f4abae4d049ec716ce, type: 3}
-  isDebugging: 0
+  isDebugging: 1
 --- !u!1 &7764285138144730061
 GameObject:
   m_ObjectHideFlags: 0

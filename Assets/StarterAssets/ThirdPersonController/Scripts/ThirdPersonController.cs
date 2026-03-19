@@ -200,7 +200,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-            _animIDAttack = Animator.StringToHash("Attack"); // optional, can be unused
+            //_animIDAttack = Animator.StringToHash("Attack"); 
 
             _animIDHit1 = Animator.StringToHash("Hit1");
             _animIDHit2 = Animator.StringToHash("Hit2");
@@ -476,7 +476,7 @@ namespace StarterAssets
             // Move to Hit2
             if (state.IsName("Hit1"))
             {
-                // Turn off Hit1 after most of the anim has played
+                // Turn off Hit1 after most of the anim has played (this is very slow??)
                 if (t > 0.7f)
                 {
                     _animator.SetBool(_animIDHit1, false);
@@ -513,12 +513,10 @@ namespace StarterAssets
             }
             else
             {
-                // Not in an attack state anymore
+                
                 _isAttacking = false;
             }
         }
-
-
 
     }
 
