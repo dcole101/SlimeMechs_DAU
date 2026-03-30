@@ -1,5 +1,5 @@
-﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
     public class ThirdPersonController : MonoBehaviour
@@ -45,8 +45,6 @@ namespace StarterAssets
 
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
-
-        public float AttackTimeout = 0.5f;
 
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
@@ -92,31 +90,26 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
-        private float _attackTimeoutDelta;
 
+        // Animator IDs
         private int _animIDSpeed;
         private int _animIDGrounded;
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
-        private int _animIDAttack;
 
-        private bool _isAttacking;
+        // Attack (trigger + int)
+        private int _animIDAttack; // Trigger "Attack"
+        private int _animIDCombo;  // Int "Combo"
 
-        //NEW COMBOS
-
+     
         [Header("Combo")]
         public float ComboResetDelay = 1f;
 
         private int _comboClicks = 0;
         private float _lastComboClickTime;
-        private int _animIDHit1;
-        private int _animIDHit2;
-        private int _animIDHit3;
 
-
-
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
         private Animator _animator;
@@ -135,11 +128,10 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM
                 return _playerInput.currentControlScheme == "KeyboardMouse";
 #else
-				return false;
+                return false;
 #endif
             }
         }
-
 
         private void Awake()
         {
@@ -153,14 +145,14 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
 #else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+            Debug.LogError("Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
             AssignAnimationIDs();
@@ -168,7 +160,6 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
-            _attackTimeoutDelta = AttackTimeout;
         }
 
         private void Update()
@@ -177,16 +168,9 @@ namespace StarterAssets
 
             GroundedCheck();
             JumpAndGravity();
-
-            if (!_isAttacking)
-            {
-                Move();
-            }
-
+            Move();
             Attack();
         }
-
-
 
         private void LateUpdate()
         {
@@ -200,13 +184,10 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-            //_animIDAttack = Animator.StringToHash("Attack"); 
 
-            _animIDHit1 = Animator.StringToHash("Hit1");
-            _animIDHit2 = Animator.StringToHash("Hit2");
-            _animIDHit3 = Animator.StringToHash("Hit3");
+            _animIDAttack = Animator.StringToHash("Attack"); // Trigger
+            _animIDCombo = Animator.StringToHash("Combo");   // Int
         }
-
 
         private void GroundedCheck()
         {
@@ -249,9 +230,6 @@ namespace StarterAssets
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
-            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
-
-            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
@@ -265,8 +243,6 @@ namespace StarterAssets
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
                 currentHorizontalSpeed > targetSpeed + speedOffset)
             {
-                // creates curved result rather than a linear one giving a more organic speed change
-                // note T in Lerp is clamped, so we don't need to clamp our speed
                 _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
                     Time.deltaTime * SpeedChangeRate);
 
@@ -284,7 +260,6 @@ namespace StarterAssets
             // normalise input direction
             Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
 
-            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
             if (_input.move != Vector2.zero)
             {
@@ -296,7 +271,6 @@ namespace StarterAssets
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
-
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
@@ -335,8 +309,6 @@ namespace StarterAssets
                 // Jump
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
-                    Debug.Log("Input Jump");
-                    // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                     // update animator if using character
@@ -375,7 +347,7 @@ namespace StarterAssets
                 _input.jump = false;
             }
 
-            // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+          
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
@@ -397,7 +369,7 @@ namespace StarterAssets
             if (Grounded) Gizmos.color = transparentGreen;
             else Gizmos.color = transparentRed;
 
-            // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+            
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
                 GroundedRadius);
@@ -423,102 +395,57 @@ namespace StarterAssets
             }
         }
 
+        public void OnComboEnd()
+        {
+            _comboClicks = 0;
+            if (_hasAnimator)
+            {
+                _animator.SetInteger(_animIDCombo, 0);
+            }
+            Debug.Log("Combo Ended Reset");
+        }
+
         private void Attack()
         {
             if (!_hasAnimator) return;
             if (!Grounded) return;
 
-            // Reset combo if too slow
-            if (Time.time - _lastComboClickTime > ComboResetDelay)
-            {
-                _comboClicks = 0;
-                _animator.SetBool(_animIDHit1, false);
-                _animator.SetBool(_animIDHit2, false);
-                _animator.SetBool(_animIDHit3, false);
-            }
+            var state = _animator.GetCurrentAnimatorStateInfo(0);
+            bool inHit3 = state.IsName("Hit3");
 
-            // Read and consume attack input
             if (_input.attack)
             {
                 _input.attack = false;
                 _lastComboClickTime = Time.time;
+
+               
+                if (inHit3 && _comboClicks == 3)
+                {
+                    // retrigger Hit3 so it keeps chaining
+                    _animator.SetInteger(_animIDCombo, 3);
+                    _animator.SetTrigger(_animIDAttack);
+                    GetComponent<PlayerCombat>()?.OnAttackStarted();
+                    return;
+                }
+
+                // Normal combo build-up 1 -> 2 -> 3
                 _comboClicks++;
-                _comboClicks = Mathf.Clamp(_comboClicks, 0, 3);
+                _comboClicks = Mathf.Clamp(_comboClicks, 1, 3);
 
-                TryStartCombo();
-            }
-
-            UpdateComboChain();
-        }
-
-        //COMBOS EXTRAS
-
-        private void TryStartCombo()
-        {
-            // If we aren't in any hit state, start the combo with Hit1
-            var state = _animator.GetCurrentAnimatorStateInfo(0);
-
-            bool inHitState = state.IsName("Hit1") || state.IsName("Hit2") || state.IsName("Hit3");
-
-            if (!inHitState && _comboClicks >= 1)
-            {
-                _animator.SetBool(_animIDHit1, true);
-                _isAttacking = true;
+                _animator.SetInteger(_animIDCombo, _comboClicks);
+                _animator.SetTrigger(_animIDAttack);
                 GetComponent<PlayerCombat>()?.OnAttackStarted();
             }
-        }
 
-        private void UpdateComboChain()
-        {
-            var state = _animator.GetCurrentAnimatorStateInfo(0);
-            float t = state.normalizedTime;
-
-            // Move to Hit2
-            if (state.IsName("Hit1"))
+         
+            if (!inHit3 || state.normalizedTime >= 0.99f)
             {
-                // Turn off Hit1 after most of the anim has played (this is very slow??)
-                if (t > 0.7f)
+                if (Time.time - _lastComboClickTime > ComboResetDelay)
                 {
-                    _animator.SetBool(_animIDHit1, false);
-                }
-
-                // Go to Hit2 if we clicked at least twice
-                if (_comboClicks >= 2 && t > 0.7f)
-                {
-                    _animator.SetBool(_animIDHit2, true);
-                }
-            }
-            // Move to Hit3
-            else if (state.IsName("Hit2"))
-            {
-                if (t > 0.7f)
-                {
-                    _animator.SetBool(_animIDHit2, false);
-                }
-
-                if (_comboClicks >= 3 && t > 0.7f)
-                {
-                    _animator.SetBool(_animIDHit3, true);
-                }
-            }
-            // End of combo on Hit3
-            else if (state.IsName("Hit3"))
-            {
-                if (t > 0.7f)
-                {
-                    _animator.SetBool(_animIDHit3, false);
                     _comboClicks = 0;
-                    _isAttacking = false;
+                    _animator.SetInteger(_animIDCombo, 0);
                 }
             }
-            else
-            {
-                
-                _isAttacking = false;
-            }
         }
-
     }
-
 }
-  

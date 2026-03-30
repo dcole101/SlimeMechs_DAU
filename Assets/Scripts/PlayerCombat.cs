@@ -21,12 +21,11 @@ public class PlayerCombat : MonoBehaviour
         Invoke(nameof(ResetDamage), 0.3f); 
     }
 
-    public void DealDamage()  // Called at hit frame
+    public void DealDamage()
     {
         Debug.Log("DealDamage Player");
-   
-
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers, QueryTriggerInteraction.Collide);
+
         foreach (Collider enemy in hitEnemies)
         {
            
@@ -34,10 +33,17 @@ public class PlayerCombat : MonoBehaviour
             enemyAi?.EnemyTakesDamage(attackDamage);
 
 
-            BossHealth bossHealth = enemy.GetComponent<BossHealth>();
-            bossHealth?.TakeDamage(attackDamage); 
+            BossController bossHealth = enemy.GetComponent<BossController>();
+            bossHealth?.BossTakeDamage(attackDamage);
 
-            Debug.Log("Enemy ai take damage called");
+          
+            TentacleHealth tentHealth = enemy.GetComponent<TentacleHealth>();
+            tentHealth?.NotifyBossDamage(attackDamage);
+
+            TarBabyNav babyHealth = enemy.GetComponent<TarBabyNav>();
+            babyHealth?.TakeDamage(attackDamage);
+
+            Debug.Log("Damage applied to: " + enemy.name);
         }
     }
 
