@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
   blockprefab: {fileID: 8063239825349250172, guid: 9ea7716a06c088747842631455c63b4b, type: 3}
-  isDebugging: 1
+  isDebugging: 0
 --- !u!1001 &434503286930129264
 PrefabInstance:
   m_ObjectHideFlags: 0

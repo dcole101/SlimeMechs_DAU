@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ccc8d62acfa6b458801fb65fa6e27a, type: 3}
+  m_Name: CutsceneDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneDialogue
+  lines:
+  - characterName: Computer
+    text: WARNING! WARNING! WARNING!
+  - characterName: Mel
+    text: "Sensors just lit up like crazy! There\u2019s an anomaly forming downtown!"
+  - characterName: Kip
+    text: Ha! Finally something interesting. I was starting to think they took the
+      day off.
+  - characterName: Ziv
+    text: You're way too casual about this, any of these anomalies are massive and
+      could injure hundreds of civilians.
+  - characterName: Mel
+    text: Looks like a big one this time. Sounds like the perfect excuse to take
+      my mech for a spin.
+  - characterName: Ziv
+    text: "Careful. The readings are unstable. This isn\u2019t a normal slime outbreak...
+      whatever\u2019s forming is building power up fast."
+  - characterName: Ziv
+    text: "Mel, it's all yours today. \nI'll be reading in the den."
+  - characterName: Kip
+    text: Go get em!
+  - characterName: Ziv
+    text: You might want to hurry. The anomaly is already expanding toward the central
+      district.
+  - characterName: Mel
+    text: Then what are we waiting for?

@@ -27,6 +27,12 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(LoadYourAsyncScene());
     }
 
+    public void PlayCutscene()
+    {
+        loadingScreen.SetActive(true);
+        StartCoroutine(CutsceneAsync());
+    }
+
     public void LoadSceneByIndex(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
@@ -68,6 +74,20 @@ public class MainMenuManager : MonoBehaviour
         {
 
             //SceneManager.LoadScene("CityTest");
+            yield return null;
+        }
+    }
+
+    IEnumerator CutsceneAsync()
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("DialogueTest");
+
+       
+        while (!asyncLoad.isDone)
+        {
+
+           
             yield return null;
         }
     }

@@ -413,22 +413,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   tilePrefabs:
-  - {fileID: 7837357897785332751, guid: c8309a0ae68d6ac4089b66005607e3f6, type: 3}
-  - {fileID: 2636842175490430760, guid: 55c081483c22939498161f0f10906594, type: 3}
-  - {fileID: 7585970788175733010, guid: 27a71d05846534644be14455d26f8f82, type: 3}
-  - {fileID: 1192580663175631789, guid: 9ff42a08b826d9746ae574fd0667e064, type: 3}
-  - {fileID: 7262157861580329930, guid: 040dc6ac87a17eb4e8343ac7a5aefa50, type: 3}
-  - {fileID: 1021692058654466176, guid: 0114069c38d7ad3458d0c3521dea8764, type: 3}
-  - {fileID: 6160648419402365044, guid: 5dba1714475273e458629a340730600b, type: 3}
-  - {fileID: 3248624490196278897, guid: ec0e16a124d771d448f15a1af2905399, type: 3}
-  - {fileID: 4500130633832448255, guid: 5ff47fcb81f03994b8abbb26ae8e0e60, type: 3}
-  - {fileID: 620693008664266310, guid: 098e396743d9f7f409027151f92d6cd0, type: 3}
-  - {fileID: 9091978965943376431, guid: 6e6cd6f755001974783c1f4537f38c21, type: 3}
-  - {fileID: 3498853809898662179, guid: 76b2d83ce7596444da68096b87de5d16, type: 3}
-  - {fileID: 8248077721566173075, guid: 1dece17dfc4ae10408dba8774ca25c5c, type: 3}
-  - {fileID: 5288881178795874858, guid: 0cebfd959c34eb04ab1dc84f95387c2f, type: 3}
-  - {fileID: 2463287544421126552, guid: 13aefddc9cb198044af54ceb06a0608d, type: 3}
-  - {fileID: 8937679733630975871, guid: 91020aa744ecb4744b7966bd7cda08ed, type: 3}
+  - {fileID: 7837357897785332751, guid: b315d0af44dc2834898c6de89532f829, type: 3}
+  - {fileID: 2636842175490430760, guid: 0ce0dbe27c854294997cdadb9ca93d45, type: 3}
+  - {fileID: 7585970788175733010, guid: 6d95bbb6d266f0f4c9216a97c66360df, type: 3}
+  - {fileID: 1192580663175631789, guid: 4250b06c66634774683094153c464d1c, type: 3}
+  - {fileID: 7262157861580329930, guid: 29567ce93ac85bd4b8992c34a094f86d, type: 3}
+  - {fileID: 1021692058654466176, guid: 0e58a7462bb7a0c44ae445a116cff877, type: 3}
+  - {fileID: 6160648419402365044, guid: fbbb7baf55cc1ad4e8e02b1405002961, type: 3}
+  - {fileID: 3248624490196278897, guid: c4ef8395cb05af943a0a020292a54383, type: 3}
+  - {fileID: 4500130633832448255, guid: 686ef78222350484c93934f4f53b83e4, type: 3}
+  - {fileID: 620693008664266310, guid: 50922b9eeac93fc4681a5435f5b8dcf2, type: 3}
+  - {fileID: 9091978965943376431, guid: 04b7c89d972e6424bbab63178689a611, type: 3}
+  - {fileID: 3498853809898662179, guid: 9b3ae33b69cb0c949bedb5582df198c8, type: 3}
+  - {fileID: 8248077721566173075, guid: 9cea3e45bc24ac1489c524f1950430da, type: 3}
+  - {fileID: 5288881178795874858, guid: 9d8e9c08270852c4889e73fc393c30f8, type: 3}
+  - {fileID: 2463287544421126552, guid: f21ed3b32358aa540a628fe546437e5d, type: 3}
+  - {fileID: 8937679733630975871, guid: 0488d2019167d864e95a7827e940631b, type: 3}
   directions:
   - bit: 1
     offset: {x: 0, y: 1}
@@ -444,8 +444,8 @@ MonoBehaviour:
     checkAdjacentTiles: 1
     pruneEdges: 1
     deadEndRemoval: 1
-  gridSize: 10
-  tileSize: 100
+  gridSize: 20
+  tileSize: 9
 --- !u!4 &928554750
 Transform:
   m_ObjectHideFlags: 0

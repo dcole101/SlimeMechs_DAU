@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
   blockprefab: {fileID: 2563826512327041337, guid: 9fcbcbd8094bdc341b5279786f4f35a5, type: 3}
-  isDebugging: 1
+  isDebugging: 0
 --- !u!1 &6403148746723006986
 GameObject:
   m_ObjectHideFlags: 0
