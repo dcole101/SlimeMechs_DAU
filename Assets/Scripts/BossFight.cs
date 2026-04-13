@@ -15,8 +15,9 @@ public class BossController : MonoBehaviour
 
     public TMP_Text countdownText;
 
-    public AudioSource musicSource;
-    public AudioClip bossMusicTrack;
+    //Music to be implemented later
+    //public AudioSource musicSource;
+    //public AudioClip bossMusicTrack;
 
     private float timeRemaining;
     private bool bossSpawned = false;
@@ -106,11 +107,12 @@ public class BossController : MonoBehaviour
 
     }
 
+    ///////// BOSS SPAWNING IN ////////////////////////////////////////////////////////
 
     IEnumerator SpawnBossSequence()
     {
         yield return new WaitForSeconds(spawnTimer);
-        SwitchToBossMusic();
+        //SwitchToBossMusic();
 
         if (bossInstance != null)
         {
@@ -143,20 +145,20 @@ public class BossController : MonoBehaviour
         countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    void SwitchToBossMusic()
-    {
-        if (musicSource != null && bossMusicTrack != null)
-        {
-            musicSource.Stop();
-            musicSource.clip = bossMusicTrack;
-            musicSource.Play();
-            Debug.Log("Boss music started!");
-        }
-        else
-        {
-            Debug.LogWarning("Boss music error");
-        }
-    }
+    //void SwitchToBossMusic()
+    //{
+    //    if (musicSource != null && bossMusicTrack != null)
+    //    {
+    //        musicSource.Stop();
+    //        musicSource.clip = bossMusicTrack;
+    //        musicSource.Play();
+    //        Debug.Log("Boss music started!");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Boss music error");
+    //    }
+    //}
 
 
     IEnumerator GrowBossFromGround()
@@ -199,12 +201,10 @@ public class BossController : MonoBehaviour
         }
     }
 
-
+    ///////// Taking Damage  ////////////////////////////////////////////////////////
     public void BossTakeDamage(int damage)
     {
       
-
-
         if(vulnerable == true)
         {
             Debug.Log("Boss Damaged: " + damage);
@@ -234,8 +234,6 @@ public class BossController : MonoBehaviour
         }
     }
 
-
-
     public void OnTentacleDeath()
     {
         health -= 10;
@@ -248,6 +246,8 @@ public class BossController : MonoBehaviour
         leftarmanimator.SetTrigger("TakeHit");
         rightarmanimator.SetTrigger("TakeHit");
     }
+
+    ///////// PHASE 2 - SLUDGE BEAM ////////////////////////////////////////////////////////
 
     IEnumerator EnterBeamPhase()
     {
@@ -262,13 +262,16 @@ public class BossController : MonoBehaviour
         bodyanimator.ResetTrigger("TakeHit");
         leftarmanimator.ResetTrigger("TakeHit");
         rightarmanimator.ResetTrigger("TakeHit");
+
         yield return new WaitForSeconds(3f);
         tentaclesActive = false;
         Debug.Log("Boss State: 60% Health - Starting beam attacks");
         StartCoroutine(BeamAttackLoop());
+
         bodyanimator.ResetTrigger("Endphase1");
         leftarmanimator.ResetTrigger("Endphase1");
         rightarmanimator.ResetTrigger("Endphase1");
+
         vulnerable = true;
     }
 
@@ -291,14 +294,10 @@ public class BossController : MonoBehaviour
             yield return new WaitForSeconds(5f);
             vulnerable = true;
 
-            //isWeakness = true;
-            //Debug.Log("Boss State: Beam cooldown - VULNERABLE (" + weaknessWindow + "s)");
-            //yield return new WaitForSeconds(weaknessWindow);
-            //isWeakness = false;
-            //Debug.Log("Boss State: INVINCIBLE");
-            //yield return new WaitForSeconds(beamCooldown);
         }
     }
+
+    ///////// PHASE 3 - BABY MODE ////////////////////////////////////////////////////////
 
     IEnumerator EnterBabyPhase()
     {
@@ -309,14 +308,14 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(6f);
 
         vulnerable = false;
-        //moveboss away
 
+        //moveboss away - hacky but works
         Transform bossTransform = bossInstance.transform;
         Vector3 currentPos = bossTransform.position;
         bossTransform.position = new Vector3(currentPos.x, -200f, currentPos.z);
 
         smokebomb.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         
 
         babySpawned = true;
@@ -331,6 +330,8 @@ public class BossController : MonoBehaviour
         smokebomb.SetActive(false);
 
     }
+
+    // Not using yet will be used eventually
 
     void BossDie()
     {
