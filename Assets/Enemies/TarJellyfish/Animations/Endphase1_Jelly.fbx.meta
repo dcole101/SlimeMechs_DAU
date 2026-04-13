@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: a7c7e9b1a7146894eb25f6e558545900
+guid: 5b027adc59127e541b2f9ff38f2e278b
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tentacle_Mat
-    second: {fileID: 2100000, guid: f2d89e614a06af3449bef472c6f743ce, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -36,18 +31,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: LeftArm|Armature.008Action
-      takeName: LeftArm|Armature.008Action
-      internalID: -1361074756460658566
+      name: Leftarm_v2
+      takeName: Armature.008|Armature.008Action
+      internalID: 899012397967054675
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 73
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -65,9 +60,38 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: LeftArm|Armature.008Action.001
-      takeName: LeftArm|Armature.008Action.001
-      internalID: 2934386611601203733
+      name: Leftarm_Endphase1
+      takeName: Armature.008|Armature.009Action
+      internalID: 4692994238387577808
+      firstFrame: 0
+      lastFrame: 73
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature.008|BendyBoneAction
+      takeName: Armature.008|BendyBoneAction
+      internalID: -2262018655578418572
       firstFrame: 0
       lastFrame: 79
       wrapMode: 0
@@ -94,18 +118,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: LeftArm_Idle
-      takeName: LeftArm|Armature.009Action
-      internalID: -1999360491523160270
+      name: Armature.009|Armature.008Action
+      takeName: Armature.009|Armature.008Action
+      internalID: 5208183565815042789
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 73
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -123,9 +147,67 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: LeftArm|BendyBoneAction
-      takeName: LeftArm|BendyBoneAction
-      internalID: 5264460939643212127
+      name: Rightarm_Endphase1
+      takeName: Armature.009|Armature.009Action
+      internalID: 692196042629243884
+      firstFrame: 0
+      lastFrame: 73
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature.009|BendyBoneAction
+      takeName: Armature.009|BendyBoneAction
+      internalID: 6839979561468550970
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Body_Endphase1
+      takeName: BendyBone|BendyBoneAction
+      internalID: 3254297556722363147
       firstFrame: 0
       lastFrame: 79
       wrapMode: 0

@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: a7c7e9b1a7146894eb25f6e558545900
+guid: c4a0ff8d4ca229b4e86154b12692406a
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tentacle_Mat
-    second: {fileID: 2100000, guid: f2d89e614a06af3449bef472c6f743ce, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,36 +35,7 @@ ModelImporter:
       takeName: LeftArm|Armature.008Action
       internalID: -1361074756460658566
       firstFrame: 0
-      lastFrame: 79
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: LeftArm|Armature.008Action.001
-      takeName: LeftArm|Armature.008Action.001
-      internalID: 2934386611601203733
-      firstFrame: 0
-      lastFrame: 79
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -94,11 +60,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: LeftArm_Idle
+      name: LeftArm_TakeHit_009
       takeName: LeftArm|Armature.009Action
       internalID: -1999360491523160270
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -127,7 +93,7 @@ ModelImporter:
       takeName: LeftArm|BendyBoneAction
       internalID: 5264460939643212127
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

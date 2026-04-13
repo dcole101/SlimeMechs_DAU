@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour
     [Header("Boss Spawn / Timer")]
     public GameObject bossPrefab;
     public GameObject bossInstance;
+
     public Vector3 spawnPosition = Vector3.zero;
     public float spawnTimer = 30f;
 
@@ -20,6 +21,15 @@ public class BossController : MonoBehaviour
     private float timeRemaining;
     private bool bossSpawned = false;
     private bool bossActive = false;
+
+    [SerializeField] public GameObject BodyAnimator;
+    private Animator bodyanimator;
+
+    [SerializeField] public GameObject LeftArmAnimator;
+    private Animator leftarmanimator;
+
+    [SerializeField] public GameObject RightArmAnimator;
+    private Animator rightarmanimator;
 
 
     [Header("Health")]
@@ -39,13 +49,14 @@ public class BossController : MonoBehaviour
 
     [Header("Phase 3: Baby")]
     public GameObject babyPrefab;
-    public float babyFleeSpeed = 8f;
+   
+    public GameObject smokebomb;
 
     [Header("References")]
     public Transform player;
 
     private int health;
-    private bool isWeakness = false;
+    private bool vulnerable = false;
     private bool tentaclesActive = true;
     private bool babySpawned = false;
 
@@ -67,6 +78,11 @@ public class BossController : MonoBehaviour
             healthBar.SetMaxHealth(maxHealth);
             healthBar.SetHealth(health);
         }
+
+        //assign animators
+        bodyanimator = BodyAnimator.GetComponent<Animator>();
+        leftarmanimator = LeftArmAnimator.GetComponent<Animator>();
+        rightarmanimator = RightArmAnimator.GetComponent<Animator>();
 
         // Start timer countdown
         timeRemaining = spawnTimer;
@@ -145,12 +161,12 @@ public class BossController : MonoBehaviour
 
     IEnumerator GrowBossFromGround()
     {
+        vulnerable = false;
         Debug.Log("Boss State: SPAWNING - Growing from ground");
         Transform bossTransform = bossInstance.transform;
 
         bossTransform.localScale = Vector3.zero;
-        NavMeshAgent agent = bossInstance.GetComponent<NavMeshAgent>();
-        if (agent) agent.enabled = false;
+        
 
         float growTime = 7f;
         Vector3 targetScale = Vector3.one;
@@ -160,13 +176,13 @@ public class BossController : MonoBehaviour
             yield return null;
         }
         bossTransform.localScale = targetScale;
-        if (agent) agent.enabled = true;
+        vulnerable = true;
     }
 
     void SpawnTentacles()
     {
         StartCoroutine(SpawnTentaclesRoutine());
-        isWeakness = true;
+        vulnerable = true;
     }
 
     IEnumerator SpawnTentaclesRoutine()
@@ -186,20 +202,31 @@ public class BossController : MonoBehaviour
 
     public void BossTakeDamage(int damage)
     {
-        // Only damage during weak / low‑health windows
-        if (!isWeakness && health > maxHealth * 0.6f) return;
+      
 
-        Debug.Log("Boss Damaged: " + damage);
-        health -= damage;
+
+        if(vulnerable == true)
+        {
+            Debug.Log("Boss Damaged: " + damage);
+            health -= damage;
+
+            //animation
+            bodyanimator.SetTrigger("TakeHit");
+            leftarmanimator.SetTrigger("TakeHit");
+            rightarmanimator.SetTrigger("TakeHit");
+
+        }
+       
+
         if (healthBar != null) healthBar.SetHealth(health);
 
         if (health <= 0.2f * maxHealth && !babySpawned)
         {
-            EnterBabyPhase();
+            StartCoroutine(EnterBabyPhase());
         }
         else if (health <= 0.6f * maxHealth && tentaclesActive)
         {
-            EnterBeamPhase();
+            StartCoroutine(EnterBeamPhase());
         }
         else if (health <= 0)
         {
@@ -214,70 +241,95 @@ public class BossController : MonoBehaviour
         health -= 10;
         if (healthBar) healthBar.SetHealth(health);
         Debug.Log("Boss State: Tentacle killed - Health reduced to " + health);
-        if (health <= maxHealth * 0.6f) EnterBeamPhase();
+        if (health <= maxHealth * 0.6f) StartCoroutine(EnterBeamPhase());
+
+        //animation
+        bodyanimator.SetTrigger("TakeHit");
+        leftarmanimator.SetTrigger("TakeHit");
+        rightarmanimator.SetTrigger("TakeHit");
     }
 
-    void EnterBeamPhase()
+    IEnumerator EnterBeamPhase()
     {
+        vulnerable = false;
+
+       
+
+        bodyanimator.SetTrigger("Endphase1");
+        leftarmanimator.SetTrigger("Endphase1");
+        rightarmanimator.SetTrigger("Endphase1");
+
+        bodyanimator.ResetTrigger("TakeHit");
+        leftarmanimator.ResetTrigger("TakeHit");
+        rightarmanimator.ResetTrigger("TakeHit");
+        yield return new WaitForSeconds(3f);
         tentaclesActive = false;
         Debug.Log("Boss State: 60% Health - Starting beam attacks");
         StartCoroutine(BeamAttackLoop());
+        bodyanimator.ResetTrigger("Endphase1");
+        leftarmanimator.ResetTrigger("Endphase1");
+        rightarmanimator.ResetTrigger("Endphase1");
+        vulnerable = true;
     }
 
     IEnumerator BeamAttackLoop()
     {
-        Transform bossTransform = bossInstance.transform;
-        NavMeshAgent agent = bossInstance.GetComponent<NavMeshAgent>();
-        Transform firePoint = bossInstance.transform.Find("FirePoint");
-        if (firePoint == null)
-        {
-            Debug.LogWarning("BossController: FirePoint not found; using boss position as fallback.");
-            firePoint = bossInstance.transform;
-        }
-
         while (health > maxHealth * 0.2f)
         {
-            yield return StartCoroutine(FireSludgeBeam(bossTransform, agent, firePoint));
-            isWeakness = true;
-            Debug.Log("Boss State: Beam cooldown - VULNERABLE (" + weaknessWindow + "s)");
-            yield return new WaitForSeconds(weaknessWindow);
-            isWeakness = false;
-            Debug.Log("Boss State: INVINCIBLE");
+            
             yield return new WaitForSeconds(beamCooldown);
+
+            vulnerable = false;
+            bodyanimator.SetTrigger("Beam");
+            leftarmanimator.SetTrigger("Beam");
+            rightarmanimator.SetTrigger("Beam");
+
+            bodyanimator.ResetTrigger("TakeHit");
+            leftarmanimator.ResetTrigger("TakeHit");
+            rightarmanimator.ResetTrigger("TakeHit");
+
+            yield return new WaitForSeconds(5f);
+            vulnerable = true;
+
+            //isWeakness = true;
+            //Debug.Log("Boss State: Beam cooldown - VULNERABLE (" + weaknessWindow + "s)");
+            //yield return new WaitForSeconds(weaknessWindow);
+            //isWeakness = false;
+            //Debug.Log("Boss State: INVINCIBLE");
+            //yield return new WaitForSeconds(beamCooldown);
         }
     }
 
-    IEnumerator FireSludgeBeam(Transform bossTransform, NavMeshAgent agent, Transform firePoint)
+    IEnumerator EnterBabyPhase()
     {
-        if (agent != null) agent.SetDestination(bossTransform.position);
-        bossTransform.LookAt(player);
+        bodyanimator.SetTrigger("Endphase2");
+        leftarmanimator.SetTrigger("Endphase2");
+        rightarmanimator.SetTrigger("Endphase2");
 
-        int beamCount = 7;
-        float beamAngleSpread = 45f;
-        for (int i = 0; i < beamCount; i++)
-        {
-            float angle = ((float)i / (beamCount - 1) - 0.5f) * beamAngleSpread;
-            Quaternion rot = Quaternion.Euler(0, angle, 0) * bossTransform.rotation;
-            Vector3 spawnPos = firePoint ? firePoint.position : bossTransform.position + bossTransform.up * 1.5f;
-            GameObject proj = Instantiate(sludgeProjectile, spawnPos, rot);
-            Rigidbody rb = proj.GetComponent<Rigidbody>();
-            if (rb)
-            {
-                rb.AddForce(bossTransform.forward * 32f, ForceMode.Impulse);
-                rb.AddForce(bossTransform.up * 8f, ForceMode.Impulse);
-            }
-            yield return new WaitForSeconds(0.2f);
-        }
-    }
+        yield return new WaitForSeconds(6f);
 
-    void EnterBabyPhase()
-    {
+        vulnerable = false;
+        //moveboss away
+
+        Transform bossTransform = bossInstance.transform;
+        Vector3 currentPos = bossTransform.position;
+        bossTransform.position = new Vector3(currentPos.x, -200f, currentPos.z);
+
+        smokebomb.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        
+
         babySpawned = true;
         Debug.Log("Boss State: 20% Health - Baby flee mode");
-        GameObject baby = Instantiate(babyPrefab, bossInstance.transform.position, Quaternion.identity);
-        TarBabyNav babyAI = baby.GetComponent<TarBabyNav>();
+        
+        babyPrefab.SetActive(true);
+        babyPrefab.transform.position = spawnPosition;
+
+        TarBabyNav babyAI = babyPrefab.GetComponent<TarBabyNav>();
         if (babyAI) babyAI.Setup(player);
-        if (bossInstance) Destroy(bossInstance);
+
+        smokebomb.SetActive(false);
+
     }
 
     void BossDie()
@@ -290,7 +342,5 @@ public class BossController : MonoBehaviour
             Destroy(bossInstance, 0.5f);
         }
 
-        // Or load scene, etc.
-        // SceneManager.LoadScene("EndScreen");
     }
 }
