@@ -253,8 +253,6 @@ public class BossController : MonoBehaviour
     {
         vulnerable = false;
 
-       
-
         bodyanimator.SetTrigger("Endphase1");
         leftarmanimator.SetTrigger("Endphase1");
         rightarmanimator.SetTrigger("Endphase1");
