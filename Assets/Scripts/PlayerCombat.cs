@@ -12,6 +12,7 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 2f;
     public LayerMask enemyLayers;
 
+
     private bool canDamage = false;
 
     public void OnAttackStarted() 
@@ -44,6 +45,8 @@ public class PlayerCombat : MonoBehaviour
             babyHealth?.TakeDamage(attackDamage);
 
             Debug.Log("Damage applied to: " + enemy.name);
+
+           
         }
     }
 

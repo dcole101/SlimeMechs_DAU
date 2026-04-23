@@ -68,6 +68,18 @@ public class TarBabyNav : MonoBehaviour
     private NavMeshAgent agent;
     private float _updateTimer;
 
+    public HealthBar healthBar;
+    [SerializeField] private BossController boss;
+
+    public Animator babyanimator;
+    private bool isDead;
+
+    void Start()
+    {
+        babyanimator = GetComponent<Animator>();
+        isDead = false;
+    }
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -77,12 +89,16 @@ public class TarBabyNav : MonoBehaviour
     {
         if (player == null) return;
 
-        _updateTimer -= Time.deltaTime;
-        if (_updateTimer <= 0f)
+        if(isDead == false)
         {
-            _updateTimer = updateRate;
-            SetFleeDestination();
+            _updateTimer -= Time.deltaTime;
+            if (_updateTimer <= 0f)
+            {
+                _updateTimer = updateRate;
+                SetFleeDestination();
+            }
         }
+        
     }
 
     private void SetFleeDestination()
@@ -92,7 +108,7 @@ public class TarBabyNav : MonoBehaviour
 
         // Target point some distance away from player in that direction
         Vector3 desiredPosition = player.position + awayFromPlayer * fleeDistance;
-
+         
         // Keep y the same as current to avoid weird vertical offsets
         desiredPosition.y = transform.position.y;
 
@@ -102,12 +118,32 @@ public class TarBabyNav : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        BossController health = GetComponent<BossController>();
-        if (health != null) health.BossTakeDamage(damage);
+        BossController boss = FindObjectOfType<BossController>();
+        if (boss != null)
+            boss.BossTakeDamage(damage);
+        else
+            Debug.LogError("No BossController found!");
+
+        babyanimator.SetTrigger("TakeHit");
     }
 
     public void Setup(Transform playerRef)
     {
         player = playerRef;
     }
+
+    public void Die()
+    {
+        //isDead = true;
+        if (agent != null)
+        {
+            isDead = true;
+            agent.isStopped = true;  
+            agent.ResetPath();           
+            //agent.enabled = false;       
+        }
+        Debug.Log("TarBaby Disabled");
+    }
+
+
 }

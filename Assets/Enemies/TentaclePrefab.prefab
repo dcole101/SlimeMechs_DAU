@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   boss: {fileID: 0}
+  SingleTentacleAnimator: {fileID: 7088931887715057492}
 --- !u!1001 &5445783629210234602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +244,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}
+--- !u!1 &7088931887715057492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3022969393635611070, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}
+  m_PrefabInstance: {fileID: 5445783629210234602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7162158027198360807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2951642937523978765, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}

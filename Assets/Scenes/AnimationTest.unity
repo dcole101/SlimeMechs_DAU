@@ -3305,6 +3305,14 @@ PrefabInstance:
       propertyPath: CameraCollisionFilter.m_Bits
       value: 65
       objectReference: {fileID: 0}
+    - target: {fileID: 2070925442191277753, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
+      propertyPath: m_NoiseProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    - target: {fileID: 2070925442191277753, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
+      propertyPath: m_AmplitudeGain
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2070925442191277755, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -3312,7 +3320,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2070925441746177671, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1063846771}
   m_SourcePrefab: {fileID: 100100000, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
 --- !u!1 &637300132
 GameObject:
@@ -3745,6 +3756,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurnOnBeam
   sludgeProjectile: {fileID: 25000873}
+--- !u!114 &777798427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777798419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cf618b9aa27964ba4d80b1a5e91e7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossShakeReceiver
+  camShake: {fileID: 1063846771}
 --- !u!1 &784815839
 GameObject:
   m_ObjectHideFlags: 0
@@ -4764,6 +4788,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054424873}
   m_CullTransparentMesh: 1
+--- !u!1 &1063846768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2070925441746177671, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
+  m_PrefabInstance: {fileID: 611273818}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1063846771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063846768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1454ba5c01cbba45ad784a99a4e4f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+  shakeDuration: 0.3
+  maxShakeIntensity: 2
 --- !u!1 &1075341647
 GameObject:
   m_ObjectHideFlags: 0
@@ -5131,10 +5174,12 @@ MonoBehaviour:
   - {fileID: 1336473408}
   tentacleSpawnDelay: 2
   tentacleCount: 4
+  activeTentacles: []
   sludgeProjectile: {fileID: 25000873}
   beamCooldown: 15
   weaknessWindow: 3
   babyPrefab: {fileID: 2057474120}
+  babyanimator: {fileID: 2057474125}
   smokebomb: {fileID: 514121597}
   player: {fileID: 1397095310}
 --- !u!136 &1112689248
@@ -5887,6 +5932,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1921249024777007197, guid: a4eb180a1c26cff49bd16d888c97fa50, type: 3}
       insertIndex: -1
       addedObject: {fileID: 777798423}
+    - targetCorrespondingSourceObject: {fileID: 1921249024777007197, guid: a4eb180a1c26cff49bd16d888c97fa50, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 777798427}
   m_SourcePrefab: {fileID: 100100000, guid: a4eb180a1c26cff49bd16d888c97fa50, type: 3}
 --- !u!1 &1240253078
 GameObject:
@@ -6814,6 +6862,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: camShake
+      value: 
+      objectReference: {fileID: 1063846771}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: SprintSpeed
       value: 7
       objectReference: {fileID: 0}
@@ -7167,6 +7219,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8944336655422409498, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1477079791}
+    - targetCorrespondingSourceObject: {fileID: 8944336655422409498, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1477079801}
   m_SourcePrefab: {fileID: 100100000, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
 --- !u!1 &1477079790 stripped
 GameObject:
@@ -7227,6 +7282,20 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
   m_PrefabInstance: {fileID: 1477079789}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1477079801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477079790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1454ba5c01cbba45ad784a99a4e4f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+  shakeDuration: 0.3
+  maxShakeIntensity: 2
 --- !u!1 &1486125667
 GameObject:
   m_ObjectHideFlags: 0
@@ -7401,7 +7470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1551631304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13846,6 +13915,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3421070400488828472, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
   m_PrefabInstance: {fileID: 8646363511089543945}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &2057474125 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8273650311075262200, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
+  m_PrefabInstance: {fileID: 8646363511089543945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2077437994
 GameObject:
   m_ObjectHideFlags: 0
@@ -14013,15 +14087,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.753975
+      value: -5.75
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 19.9
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14029,15 +14103,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2608083138350232706, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14059,18 +14133,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5910259825353488899, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
+    - target: {fileID: 7186215766805828927, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 1112689247}
     - target: {fileID: 7186215766805828927, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1397095310}
     - target: {fileID: 7186215766805828927, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
-      propertyPath: fleeDistance
-      value: 15
-      objectReference: {fileID: 0}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 201041839}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

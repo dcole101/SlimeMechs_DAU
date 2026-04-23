@@ -109,6 +109,8 @@ namespace StarterAssets
         private int _comboClicks = 0;
         private float _lastComboClickTime;
 
+        public CameraShake camShake;
+
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
@@ -160,6 +162,14 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            //camShake = FindObjectOfType<CinemachineVirtualCamera>().GetComponent<CameraShake>();
+        }
+
+
+        public void Shake(float magnitude)
+        {
+            camShake.Shake(0.2f, magnitude);
         }
 
         private void Update()

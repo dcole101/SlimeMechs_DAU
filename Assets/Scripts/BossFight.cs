@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine.AI;
 using System.Collections;
 
+using System.Collections.Generic;
+
+
 public class BossController : MonoBehaviour
 {
     [Header("Boss Spawn / Timer")]
@@ -33,6 +36,7 @@ public class BossController : MonoBehaviour
     private Animator rightarmanimator;
 
 
+
     [Header("Health")]
     public int maxHealth = 1000;
     public HealthBar healthBar;
@@ -42,6 +46,8 @@ public class BossController : MonoBehaviour
     public Transform[] tentacleSpawnPoints;
     public float tentacleSpawnDelay = 2f;
     public int tentacleCount = 4;
+    public List<GameObject> activeTentacles = new List<GameObject>();
+
 
     [Header("Phase 2: Beam")]
     public GameObject sludgeProjectile;
@@ -50,6 +56,7 @@ public class BossController : MonoBehaviour
 
     [Header("Phase 3: Baby")]
     public GameObject babyPrefab;
+    public Animator babyanimator;
    
     public GameObject smokebomb;
 
@@ -61,6 +68,7 @@ public class BossController : MonoBehaviour
     private bool tentaclesActive = true;
     private bool babySpawned = false;
 
+   
 
     void Awake()
     {
@@ -84,6 +92,7 @@ public class BossController : MonoBehaviour
         bodyanimator = BodyAnimator.GetComponent<Animator>();
         leftarmanimator = LeftArmAnimator.GetComponent<Animator>();
         rightarmanimator = RightArmAnimator.GetComponent<Animator>();
+       
 
         // Start timer countdown
         timeRemaining = spawnTimer;
@@ -106,6 +115,8 @@ public class BossController : MonoBehaviour
         if (healthBar != null) healthBar.SetHealth(health);
 
     }
+
+  
 
     ///////// BOSS SPAWNING IN ////////////////////////////////////////////////////////
 
@@ -185,6 +196,7 @@ public class BossController : MonoBehaviour
     {
         StartCoroutine(SpawnTentaclesRoutine());
         vulnerable = true;
+       
     }
 
     IEnumerator SpawnTentaclesRoutine()
@@ -195,17 +207,46 @@ public class BossController : MonoBehaviour
             {
                 GameObject tentacle = Instantiate(tentaclePrefab, tentacleSpawnPoints[i].position, Quaternion.identity);
                 TentacleHealth tentHealth = tentacle.GetComponent<TentacleHealth>();
-                if (tentHealth) tentHealth.boss = this; // Link to this boss
+                if (tentHealth) tentHealth.boss = this;
+                activeTentacles.Add(tentacle);
+
+                Transform tentacleTransform = tentacle.transform;
+                tentacleTransform.localScale = Vector3.zero;
+                float growTime = 3f;
+                Vector3 targetScale = Vector3.one;
+                for (float t = 0; t < growTime; t += Time.deltaTime)
+                {
+                    tentacleTransform.localScale = Vector3.Lerp(Vector3.zero, targetScale, t / growTime);
+                    yield return null;
+                }
+                tentacleTransform.localScale = targetScale;
             }
             yield return new WaitForSeconds(tentacleSpawnDelay);
         }
+    }
+
+    IEnumerator ShrinkTentacle(GameObject tentacle)
+    {
+        Transform tentacleTransform = tentacle.transform;
+        float shrinkTime = 2f;
+        Vector3 startScale = tentacleTransform.localScale;
+
+        for (float t = 0; t < shrinkTime; t += Time.deltaTime)
+        {
+            tentacleTransform.localScale = Vector3.Lerp(startScale, Vector3.zero, t / shrinkTime);
+            yield return null;
+        }
+
+        tentacleTransform.localScale = Vector3.zero;
+        activeTentacles.Remove(tentacle);
+        Destroy(tentacle);
     }
 
     ///////// Taking Damage  ////////////////////////////////////////////////////////
     public void BossTakeDamage(int damage)
     {
       
-        if(vulnerable == true)
+        if(vulnerable)
         {
             Debug.Log("Boss Damaged: " + damage);
             health -= damage;
@@ -220,13 +261,15 @@ public class BossController : MonoBehaviour
 
         if (healthBar != null) healthBar.SetHealth(health);
 
-        if (health <= 0.2f * maxHealth && !babySpawned)
+        if (health <= 0.3f * maxHealth && !babySpawned)
         {
             StartCoroutine(EnterBabyPhase());
         }
         else if (health <= 0.6f * maxHealth && tentaclesActive)
         {
             StartCoroutine(EnterBeamPhase());
+            StartCoroutine(ShrinkAllTentacles());
+
         }
         else if (health <= 0)
         {
@@ -241,10 +284,20 @@ public class BossController : MonoBehaviour
         Debug.Log("Boss State: Tentacle killed - Health reduced to " + health);
         if (health <= maxHealth * 0.6f) StartCoroutine(EnterBeamPhase());
 
-        //animation
+        StartCoroutine(ShrinkAllTentacles());
+
         bodyanimator.SetTrigger("TakeHit");
         leftarmanimator.SetTrigger("TakeHit");
         rightarmanimator.SetTrigger("TakeHit");
+    }
+
+    IEnumerator ShrinkAllTentacles()
+    {
+        foreach (GameObject tentacle in activeTentacles.ToArray())
+        {
+            StartCoroutine(ShrinkTentacle(tentacle));
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     ///////// PHASE 2 - SLUDGE BEAM ////////////////////////////////////////////////////////
@@ -314,18 +367,20 @@ public class BossController : MonoBehaviour
 
         smokebomb.SetActive(true);
         yield return new WaitForSeconds(4f);
-        
+        vulnerable = true;
 
         babySpawned = true;
         Debug.Log("Boss State: 20% Health - Baby flee mode");
         
         babyPrefab.SetActive(true);
-        babyPrefab.transform.position = spawnPosition;
+        //babyPrefab.transform.position = spawnPosition;
 
         TarBabyNav babyAI = babyPrefab.GetComponent<TarBabyNav>();
         if (babyAI) babyAI.Setup(player);
 
         smokebomb.SetActive(false);
+        babyanimator = babyPrefab.GetComponent<Animator>();
+        babyanimator.SetTrigger("Flip");
 
     }
 
@@ -336,8 +391,13 @@ public class BossController : MonoBehaviour
         Debug.Log("Boss State: 0% - FINAL DEATH");
         if (bossInstance)
         {
-            Animator anim = bossInstance.GetComponent<Animator>();
-            if (anim) anim.SetTrigger("Die");
+           babyanimator = babyPrefab.GetComponent<Animator>();
+            babyanimator.SetTrigger("Die");
+
+            TarBabyNav babyAI = babyPrefab.GetComponent<TarBabyNav>();
+            if (babyAI) babyAI.Die();
+            //healthBar.SetActive(false);
+
             Destroy(bossInstance, 0.5f);
         }
 
