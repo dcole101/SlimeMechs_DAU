@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool attack;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -20,7 +21,7 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
-#if ENABLE_INPUT_SYSTEM
+//#if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
@@ -43,7 +44,15 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
-#endif
+
+		///_________Dani---------------
+
+		public void OnAttack(InputValue value)
+		{
+			AttackInput(value.isPressed);
+			Debug.Log("Left Click");
+		}
+//#endif
 
 
 		public void MoveInput(Vector2 newMoveDirection)
@@ -75,6 +84,12 @@ namespace StarterAssets
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
-	}
+
+        //added mine
+        public void AttackInput(bool newAttackState)
+        {
+            attack = newAttackState;
+        }
+    }
 	
 }

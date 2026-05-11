@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ccc8d62acfa6b458801fb65fa6e27a, type: 3}
+  m_Name: VictoryDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneDialogue
+  lines:
+  - characterName: Mel
+    text: 'You could say I really slimed that guy! He won''t be coming back for a
+      while.
+
+'
+  - characterName: Ziv
+    text: 'Oh my God Mel, you have got to stop saying that.
+
+'
+  - characterName: Mel
+    text: What, it's funny! You're just JELLO-lish of me.
+  - characterName: Kip
+    text: 'You and your SlimeMech are really getting in sync! I think you only damaged
+      a few hundred trees and lightposts!
+
+'
+  - characterName: Mel
+    text: Hey, I'm a great pilot! Some city damage comes with the job.
+  - characterName: Ziv
+    text: 'That Tar Jellyfish was huge, I''m glad it didn''t end up hurting anyone.
+
+'
+  - characterName: Ziv
+    text: I wonder where all these Slime Kaiju come from?
+  - characterName: Kip
+    text: "Doesn't matter to me, I'm always ready for more action! \r\n"
+  - characterName: Mel
+    text: Onto our next TAR-get!
+  - characterName: Ziv
+    text: 'No more puns, please...
+
+'
