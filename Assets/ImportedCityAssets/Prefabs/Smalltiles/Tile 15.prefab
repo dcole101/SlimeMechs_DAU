@@ -87,6 +87,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5910907904473930132}
+  - {fileID: 4699290323873123911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1521935830669143459
@@ -101,8 +102,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92dbbf0d845e734d85d03254cc36058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
-  blockprefab: {fileID: 7904011747054137306, guid: 81865c66df959ad41b06c0190108c3b5, type: 3}
+  blockprefab: {fileID: 6237414853944571633, guid: fe990cc96f9b73a47b6a1fad089aef7d, type: 3}
   isDebugging: 0
+--- !u!1 &9205621336412962027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4699290323873123911}
+  m_Layer: 0
+  m_Name: BossSpawnCoord
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4699290323873123911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205621336412962027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5553886901419735073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &323219573052823258
 PrefabInstance:
   m_ObjectHideFlags: 0

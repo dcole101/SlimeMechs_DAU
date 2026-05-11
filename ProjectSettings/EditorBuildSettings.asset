@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogueTest.unity
     guid: 8002ddc9096f3504e8c0e29c59c67464
   - enabled: 1
-    path: Assets/Scenes/CityTest.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainGame.unity
+    guid: cef9536ac12938043a88e8227ede3d56
   - enabled: 1
-    path: Assets/Scenes/EndScreen.unity
+    path: Assets/Scenes/VictoryDialogue.unity
     guid: 1d73ac8ddf4eec54a93d91fd984814c5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}

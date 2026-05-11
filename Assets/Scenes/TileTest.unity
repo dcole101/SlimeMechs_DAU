@@ -383,7 +383,7 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &928554748
+--- !u!1 &1975637971
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -391,22 +391,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 928554750}
-  - component: {fileID: 928554749}
+  - component: {fileID: 1975637973}
+  - component: {fileID: 1975637972}
   m_Layer: 0
-  m_Name: TileManager
+  m_Name: TileManager (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &928554749
+--- !u!114 &1975637972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928554748}
+  m_GameObject: {fileID: 1975637971}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ab21a9e876281c43af91eb34ca3fafe, type: 3}
@@ -444,15 +444,15 @@ MonoBehaviour:
     checkAdjacentTiles: 1
     pruneEdges: 1
     deadEndRemoval: 1
-  gridSize: 20
-  tileSize: 9
---- !u!4 &928554750
+  gridSize: 6
+  tileSize: 7
+--- !u!4 &1975637973
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928554748}
+  m_GameObject: {fileID: 1975637971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -467,4 +467,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 219328006}
   - {fileID: 880138031}
-  - {fileID: 928554750}
+  - {fileID: 1975637973}

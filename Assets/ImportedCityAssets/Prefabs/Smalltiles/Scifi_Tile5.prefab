@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8313569768151042225}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Scifi_Tile5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,6 +205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thick 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1016901580723472592, guid: 18688d8da6ec3b848a83c5c4f8824158, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -278,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 8034708361141627452, guid: 5291c7018d8f7764e910b3e4dc258a39, type: 3}
       propertyPath: m_Name
       value: traffic_light_002 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034708361141627452, guid: 5291c7018d8f7764e910b3e4dc258a39, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -353,6 +361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thin 3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -374,6 +386,10 @@ PrefabInstance:
     - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_Name
       value: Lamp Post (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -501,6 +517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thick 5 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1016901580723472592, guid: 18688d8da6ec3b848a83c5c4f8824158, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -575,6 +595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sign Corner
       objectReference: {fileID: 0}
+    - target: {fileID: 4653479109346504530, guid: 78b2b8ecf3b12ea4aadf70fffa6e0179, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -648,6 +672,10 @@ PrefabInstance:
     - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
       propertyPath: m_Name
       value: Tree Thin 3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -819,6 +847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Park Bench
       objectReference: {fileID: 0}
+    - target: {fileID: 5058086106721073665, guid: ae4501fe0a0d8624097f5c323e2cb701, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6446942813933999366, guid: ae4501fe0a0d8624097f5c323e2cb701, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.911286
@@ -945,6 +977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trash_Can_07
       objectReference: {fileID: 0}
+    - target: {fileID: 8704459249961336811, guid: 38549d7ea704f2240a0ad91ff968bf1d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -966,6 +1002,10 @@ PrefabInstance:
     - target: {fileID: 3646922649956121724, guid: 214952dcbf34cc642ae2e0301f4d2baf, type: 3}
       propertyPath: m_Name
       value: Bus_Stop_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3646922649956121724, guid: 214952dcbf34cc642ae2e0301f4d2baf, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4167985245368723142, guid: 214952dcbf34cc642ae2e0301f4d2baf, type: 3}
       propertyPath: m_LocalScale.x
@@ -1093,6 +1133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic_light_002
       objectReference: {fileID: 0}
+    - target: {fileID: 8034708361141627452, guid: 5291c7018d8f7764e910b3e4dc258a39, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1167,6 +1211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic_light_002 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8034708361141627452, guid: 5291c7018d8f7764e910b3e4dc258a39, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1240,6 +1288,10 @@ PrefabInstance:
     - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
       propertyPath: m_Name
       value: Tree Thin 3 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1388,6 +1440,10 @@ PrefabInstance:
     - target: {fileID: 5617363486846339834, guid: 19af21d258a8130459739f831d4562d2, type: 3}
       propertyPath: m_Name
       value: Trash_Can_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5617363486846339834, guid: 19af21d258a8130459739f831d4562d2, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1685,6 +1741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dumpster
       objectReference: {fileID: 0}
+    - target: {fileID: 3889585470403872528, guid: c136589a81c57124baa91c1d8300e085, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1706,6 +1766,10 @@ PrefabInstance:
     - target: {fileID: 3077068745346374439, guid: dbc37e359725c4549b33209976043e04, type: 3}
       propertyPath: m_Name
       value: Trash Can
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077068745346374439, guid: dbc37e359725c4549b33209976043e04, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6618830390508722440, guid: dbc37e359725c4549b33209976043e04, type: 3}
       propertyPath: m_LocalScale.x
@@ -1907,6 +1971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debris Mixed
       objectReference: {fileID: 0}
+    - target: {fileID: 8324189703792687683, guid: 1e59e2c8731af854ab66b269eb4bc056, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2002,6 +2070,10 @@ PrefabInstance:
     - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_Name
       value: Lamp Post
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -2129,6 +2201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thin 3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2202,6 +2278,10 @@ PrefabInstance:
     - target: {fileID: 5296799715182700593, guid: 25c809c91de3f8e4f86a1b5b98243795, type: 3}
       propertyPath: m_Name
       value: Trash_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296799715182700593, guid: 25c809c91de3f8e4f86a1b5b98243795, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2425,6 +2505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Newspaper Box
       objectReference: {fileID: 0}
+    - target: {fileID: 2080493739116361759, guid: ebd7c7cd1af14fd47ad4c2a79f0253f3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2499,6 +2583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: traffic_light_002 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8034708361141627452, guid: 5291c7018d8f7764e910b3e4dc258a39, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2572,6 +2660,10 @@ PrefabInstance:
     - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
       propertyPath: m_Name
       value: Tree Thin 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

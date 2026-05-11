@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7514191210566702282}
-  - component: {fileID: -1768535693756406492}
   m_Layer: 0
   m_Name: Tile 1
   m_TagString: Untagged
@@ -34,20 +33,6 @@ Transform:
   - {fileID: 6491849509531986132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1768535693756406492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2636842175490430760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a92dbbf0d845e734d85d03254cc36058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GenerateBlock
-  blockprefab: {fileID: 8382425108944143386, guid: b1cdda4b5f05a2d47a9c36ce7067ee44, type: 3}
-  isDebugging: 0
 --- !u!1 &3277306488406489150
 GameObject:
   m_ObjectHideFlags: 0

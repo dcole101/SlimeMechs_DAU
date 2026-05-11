@@ -67,7 +67,7 @@ public class MainMenuManager : MonoBehaviour
     IEnumerator LoadYourAsyncScene()
     {
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("CityTest");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainGame");
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)

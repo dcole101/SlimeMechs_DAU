@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 499923767804466749}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NewBuilding10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085996852093245386, guid: bf6dab73fbd5a344ba8b32363cd7237b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.6
       objectReference: {fileID: 0}
     - target: {fileID: 1085996852093245386, guid: bf6dab73fbd5a344ba8b32363cd7237b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -421,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085996852093245386, guid: bf6dab73fbd5a344ba8b32363cd7237b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 1085996852093245386, guid: bf6dab73fbd5a344ba8b32363cd7237b, type: 3}
       propertyPath: m_LocalPosition.z

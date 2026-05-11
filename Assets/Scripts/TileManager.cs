@@ -2,9 +2,13 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+using Unity.AI.Navigation;
+
 
 public class TileManager : MonoBehaviour
 {
+    public static TileManager Instance { get; private set; }
 
     [SerializeField] GameObject[] tilePrefabs;
     [SerializeField] DirectionInfo[] directions;
@@ -12,12 +16,15 @@ public class TileManager : MonoBehaviour
 
 
     GameObject currentTile;
+    [SerializeField] GameObject customSpawnPrefab;
 
 
     Tile[,] cityGrid;
     [SerializeField] int gridSize = 10;
     [SerializeField] int tileSize = 100;
-    
+
+    [SerializeField] private NavMeshSurface cityNavMeshSurface;
+
     void Awake()
     {
         cityGrid = new Tile[gridSize, gridSize];
@@ -29,15 +36,37 @@ public class TileManager : MonoBehaviour
         if (genOptions.pruneEdges) PruneEdges();
         if (genOptions.deadEndRemoval) DeadEndRemoval();
 
+        Instance = this;
 
+    }
+
+    void Start()
+    {
+        PlacePrefabAtRandomCenter(customSpawnPrefab);
+        StartCoroutine(BakeNavMeshAfterBuildings());
+
+    }
+
+    IEnumerator BakeNavMeshAfterBuildings()
+    {
+        yield return null; // Wait 1 frame for building instantiation
+
+        if (cityNavMeshSurface != null)
+        {
+            cityNavMeshSurface.BuildNavMesh();
+        }
+        else
+        {
+            Debug.LogWarning("CityNavMeshSurface not assigned!");
+        }
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //   SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}
     }
 
 
@@ -273,6 +302,36 @@ public class TileManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    List<Vector2Int> GetInnerPositions()
+    {
+        List<Vector2Int> innerPositions = new List<Vector2Int>();
+
+        int centerStart = (gridSize - 5) / 2;
+        int centerEnd = centerStart + 4;
+
+        for (int y = centerStart; y <= centerEnd; y++)
+        {
+            for (int x = centerStart; x <= centerEnd; x++)
+            {
+                innerPositions.Add(new Vector2Int(x, y));
+            }
+        }
+
+        return innerPositions;
+    }
+
+    public void PlacePrefabAtRandomCenter(GameObject newPrefab)
+    {
+        List<Vector2Int> innerPositions = GetInnerPositions();
+        Vector2Int randomPos = innerPositions[Random.Range(0, innerPositions.Count)];
+        Tile targetTile = cityGrid[randomPos.x, randomPos.y];
+
+        Destroy(targetTile.tileObject);
+
+        GameObject newTileObj = Instantiate(newPrefab, targetTile.position, Quaternion.identity, transform);
+
     }
 
     // Adds a directional connection (performs a binary OR)

@@ -30,7 +30,7 @@ MonoBehaviour:
     text: "Careful. The readings are unstable. This isn\u2019t a normal slime outbreak...
       whatever\u2019s forming is building power up fast."
   - characterName: Ziv
-    text: "Mel, it's all yours today. \nI'll be reading in the den."
+    text: 'Mel, it''s all yours today. '
   - characterName: Kip
     text: Go get em!
   - characterName: Ziv

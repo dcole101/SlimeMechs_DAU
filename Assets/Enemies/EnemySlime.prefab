@@ -453,7 +453,7 @@ MonoBehaviour:
   maxHealth: 100
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  timeBetweenAttacks: 1.1
+  timeBetweenAttacks: 2
   projectile: {fileID: 3134696241385233856, guid: 9fd359ab2d8b06447875f357459e4e63, type: 3}
   sightRange: 6
   attackRange: 4

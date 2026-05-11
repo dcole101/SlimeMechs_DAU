@@ -4,10 +4,18 @@ using TMPro;
 using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
+public enum DialogueType
+{
+    Cutscene,
+    Victory
+}
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+
+    [SerializeField]
+    private DialogueType dialogueType;
 
     [SerializeField] TextMeshProUGUI nameText, dialogueText;
     [SerializeField] GameObject dialoguePanel;
@@ -23,6 +31,8 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private string lastSpeaker = "";
+
+
 
     void Awake()
     {
@@ -60,7 +70,25 @@ public class DialogueManager : MonoBehaviour
 
     public void StartCutscene()
     {
-        currentDialogue = Resources.Load<CutsceneDialogue>("CutsceneDialogue");
+        string resourceName = string.Empty;
+
+        switch (dialogueType)
+        {
+            case DialogueType.Cutscene:
+                resourceName = "CutsceneDialogue";
+                break;
+            case DialogueType.Victory:
+                resourceName = "VictoryDialogue";
+                break;
+        }
+
+        currentDialogue = Resources.Load<CutsceneDialogue>(resourceName);
+        if (currentDialogue == null)
+        {
+            Debug.LogError($"Could not load {resourceName}");
+            return;
+        }
+
         currentLineIndex = 0;
         dialoguePanel.SetActive(true);
         ShowLine();
@@ -138,3 +166,4 @@ public class DialogueManager : MonoBehaviour
         FindObjectOfType<MainMenuManager>().PlayGame();
     }
 }
+

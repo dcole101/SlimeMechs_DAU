@@ -6,6 +6,9 @@ using UnityEngine.AI;
 using System.Collections.Generic;
 
 // countdown timer and then the boss spawns after the timer is done
+/// <summary>
+/// DEPRECATED!!! MOVED TO BOSSFIGHT
+/// </summary>
 public class BossSpawn : MonoBehaviour
 {
     [Header("Spawn Settings")]

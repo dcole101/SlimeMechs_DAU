@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3675018909863752558}
-  m_Layer: 0
+  - component: {fileID: 8046239619351136245}
+  m_Layer: 3
   m_Name: Industrial A (3-Story)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +34,27 @@ Transform:
   - {fileID: 3875149367073317020}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8046239619351136245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531429482573240986}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 39.44, y: 15.67, z: 33.55}
+  m_Center: {x: 0, y: 6.2, z: 0}
 --- !u!1 &3251200193803424717
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +66,7 @@ GameObject:
   - component: {fileID: 3875149367073317020}
   - component: {fileID: 5845464190768144749}
   - component: {fileID: 383002988750326571}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Industrial A (3-Story) Walls2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7890306554959701045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +190,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7890306554959701045}
     m_Modifications:
+    - target: {fileID: 596453639450402102, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7229088846652908291, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.85
@@ -208,9 +234,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9031055142631173516, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_Name
       value: Air Con 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -274,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smokestack 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3372047613603675662, guid: ea7209175bb046f4f911df5719ba1761, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -332,9 +370,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 756511574898787005, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8402767109947877705, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
       propertyPath: m_Name
       value: Air Con 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402767109947877705, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058307947732939676, guid: 22e7bd5de95a8174a9fa09ef68de1bc4, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -357,6 +407,10 @@ PrefabInstance:
     - target: {fileID: 2340997127536947817, guid: fb93a382e27805547b46da05f5999855, type: 3}
       propertyPath: m_Name
       value: Staircase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340997127536947817, guid: fb93a382e27805547b46da05f5999855, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5391291897180927122, guid: fb93a382e27805547b46da05f5999855, type: 3}
       propertyPath: m_LocalPosition.x
@@ -416,6 +470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7890306554959701045}
     m_Modifications:
+    - target: {fileID: 596453639450402102, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7229088846652908291, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.78
@@ -456,9 +514,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9031055142631173516, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
       propertyPath: m_Name
       value: Air Con 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126645698375083762, guid: b47ba653700507e4e892ca767cd09ab8, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -481,6 +547,10 @@ PrefabInstance:
     - target: {fileID: 4496871206219739313, guid: 7354f8d8c22058c4bb3012b5a15d897b, type: 3}
       propertyPath: m_Name
       value: Water Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496871206219739313, guid: 7354f8d8c22058c4bb3012b5a15d897b, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7997451846877733191, guid: 7354f8d8c22058c4bb3012b5a15d897b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -544,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Air Con 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3673919061414370903, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7974785436071349524, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.5
@@ -583,6 +657,14 @@ PrefabInstance:
     - target: {fileID: 7974785436071349524, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133992195330821046, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557210626320343172, guid: 155342a74a6b1674596cb9d15e2a4a24, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

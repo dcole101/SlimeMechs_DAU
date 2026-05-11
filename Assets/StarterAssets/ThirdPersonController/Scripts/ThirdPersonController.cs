@@ -285,6 +285,13 @@ namespace StarterAssets
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
+            // STOP movement while attacking
+            if (IsAttacking())
+            {
+                // Still apply gravity so we don't float
+                _controller.Move(Vector3.up * _verticalVelocity * Time.deltaTime);
+                return;
+            }
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
@@ -295,6 +302,17 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
+
+        bool IsAttacking()
+        {
+            if (!_hasAnimator) return false;
+
+            AnimatorStateInfo state = _animator.GetCurrentAnimatorStateInfo(0);
+            return state.IsName("Hit1") || state.IsName("Hit2") || state.IsName("Hit3");
+
+        }
+
+
 
         private void JumpAndGravity()
         {

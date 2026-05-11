@@ -1,11 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
+
 
 public class BossHealth : MonoBehaviour
 {
-    public int maxHealth = 1000;  // Set here once
-    [HideInInspector] public HealthBar healthBar;  // Controller sets this
+    public int maxHealth = 1000; 
+    [HideInInspector] public HealthBar healthBar; 
     [HideInInspector] public int health;
+
+   
+    private const float k_destroyDelay = 0.5f;
+    private bool isDead = false;
 
     void Start()
     {
@@ -21,10 +28,22 @@ public class BossHealth : MonoBehaviour
         if (health <= 0) Die();
     }
 
-    public virtual void Die()  // Virtual for override
+    public virtual void Die()  
     {
+        if (isDead)
+        {
+            return;
+        }
+        isDead = true;
+
         Debug.Log("Boss defeated!");
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, k_destroyDelay);
+        StartCoroutine(LoadEndScreenDelayed());
+    }
+
+    private IEnumerator LoadEndScreenDelayed()
+    {
+        yield return new WaitForSeconds(k_destroyDelay);
         SceneManager.LoadScene("EndScreen");
     }
 }

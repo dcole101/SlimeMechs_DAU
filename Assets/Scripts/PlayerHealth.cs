@@ -22,6 +22,14 @@ public class PlayerHealth : MonoBehaviour
     private int _takeHitTriggerID;
     private int _dieTriggerID;
 
+    [Header("Self Heal")]
+    public Image healSprite;  
+    public float healCooldown = 10f;  
+
+    private float lastHealTime;
+    private Color fullColor;
+    private bool isHealingOnCooldown;
+
 
     private int _hitTriggerID;
     private bool _isDead;
@@ -35,6 +43,11 @@ public class PlayerHealth : MonoBehaviour
             animator = GetComponentInChildren<Animator>();
 
         AssignAnimationIDs();
+
+        if (healSprite != null)
+        {
+            fullColor = healSprite.color;
+        }
     }
 
     private void AssignAnimationIDs()
@@ -47,10 +60,23 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        // Press H to heal to full health
+     //DEV HEALING GOD MODE!!!!
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    SelfHeal();
+        //}
+
         if (Input.GetKeyDown(KeyCode.H))
         {
             SelfHeal();
+        }
+
+
+        if (isHealingOnCooldown && Time.time >= lastHealTime + healCooldown && healSprite != null)
+        {
+            isHealingOnCooldown = false;
+            healSprite.color = fullColor;  
+            Debug.Log("Healing ready");
         }
     }
 
@@ -100,43 +126,46 @@ public class PlayerHealth : MonoBehaviour
             animator.SetTrigger(_dieTriggerID);
         }
 
-       
     }
 
-    // Animation Event - Call this from your Die animation clip
     public void OnDeathAnimationFinished()
     {
         if (!_isDead) return;
 
-        // Respawn at origin or respawnPoint
+       
         if (respawnPoint != null)
             transform.position = respawnPoint.position;
         else
             transform.position = Vector3.zero;
 
-        // Reset health to full
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
 
-        // Reset animator to idle state
-        if (animator != null)
-        {
-            animator.ResetTrigger(_dieTriggerID);
-            animator.Play("Idle Walk Run Blend", 0, 0f); 
-        }
+        //if (animator != null)
+        //{
+        //    animator.ResetTrigger(_dieTriggerID);
+        //    animator.Play("Idle Walk Run Blend", 0, 0f); 
+        //}
 
-        _isDead = false;
+        PauseMenu pauseMenu = FindObjectOfType<PauseMenu>();
+        if (pauseMenu) pauseMenu.ShowDieScreen();
 
-        // Re-enable player controller here if you disabled it:
-        // GetComponent<ThirdPersonController>()?.enabled = true;
+        //_isDead = false;
+
     }
 
     public void SelfHeal()
     {
-        if (_isDead) return;
+        if (_isDead || Time.time < lastHealTime + healCooldown) return;
 
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
-        Debug.Log("Player healed to full health with H key");
-    }
+        Debug.Log("Player healed to full health");
+
+        lastHealTime = Time.time;
+        isHealingOnCooldown = true;
+        Color fadedColor = fullColor;
+        fadedColor.a = 0.1f;
+        healSprite.color = fadedColor;
+    } 
 }

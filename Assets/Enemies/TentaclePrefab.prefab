@@ -242,13 +242,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3022969393635611070, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3748007697605129204}
   m_SourcePrefab: {fileID: 100100000, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}
 --- !u!1 &7088931887715057492 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3022969393635611070, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}
   m_PrefabInstance: {fileID: 5445783629210234602}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3748007697605129204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7088931887715057492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420141edb5ac0fb4785a9fe339b871b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleAttackPlayer
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  damage: 10
+  attackRange: 2
 --- !u!4 &7162158027198360807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2951642937523978765, guid: 0212aec9306c3c94c94ad470af9d18f5, type: 3}

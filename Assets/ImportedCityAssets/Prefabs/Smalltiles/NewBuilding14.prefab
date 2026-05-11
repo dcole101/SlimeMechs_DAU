@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6744671113404383986}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NewBuilding14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,10 @@ PrefabInstance:
     - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_Name
       value: Lamp Post
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -188,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thin 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -209,6 +217,10 @@ PrefabInstance:
     - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_Name
       value: Lamp Post (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -345,6 +357,10 @@ PrefabInstance:
     - target: {fileID: 587784769957719444, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
       propertyPath: m_Name
       value: Tree Thin 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 587784769957719444, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4625599104374561622, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
       propertyPath: m_LocalScale.x
@@ -534,6 +550,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thin 3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -608,6 +628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thin 3 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -629,6 +653,10 @@ PrefabInstance:
     - target: {fileID: 3077068745346374439, guid: dbc37e359725c4549b33209976043e04, type: 3}
       propertyPath: m_Name
       value: Trash Can
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077068745346374439, guid: dbc37e359725c4549b33209976043e04, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6618830390508722440, guid: dbc37e359725c4549b33209976043e04, type: 3}
       propertyPath: m_LocalScale.x
@@ -770,6 +798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp Post (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7955002
@@ -896,6 +928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree Thin 3 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6473468003075303902, guid: baa63dbe206492949871d161f245bb14, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -917,6 +953,10 @@ PrefabInstance:
     - target: {fileID: 587784769957719444, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
       propertyPath: m_Name
       value: Tree Thin 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 587784769957719444, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4625599104374561622, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
       propertyPath: m_LocalScale.x
@@ -991,6 +1031,10 @@ PrefabInstance:
     - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_Name
       value: Lamp Post (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -1132,6 +1176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp Post (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7955002
@@ -1205,6 +1253,10 @@ PrefabInstance:
     - target: {fileID: 587784769957719444, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
       propertyPath: m_Name
       value: Tree Thin 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587784769957719444, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4625599104374561622, guid: 620ed272529dd7c4ab4e50a0c5957f33, type: 3}
       propertyPath: m_LocalScale.x
@@ -1280,6 +1332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp Post (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3456191717659525447, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7768068546809858123, guid: 45192c302be429b4094f0021a7d3d9a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7955002
@@ -1353,6 +1409,10 @@ PrefabInstance:
     - target: {fileID: 5058086106721073665, guid: ae4501fe0a0d8624097f5c323e2cb701, type: 3}
       propertyPath: m_Name
       value: Park Bench
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058086106721073665, guid: ae4501fe0a0d8624097f5c323e2cb701, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6446942813933999366, guid: ae4501fe0a0d8624097f5c323e2cb701, type: 3}
       propertyPath: m_LocalScale.x
