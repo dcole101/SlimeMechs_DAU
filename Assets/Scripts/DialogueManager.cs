@@ -32,6 +32,8 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping = false;
     private string lastSpeaker = "";
 
+    public bool playgame = true;
+
 
 
     void Awake()
@@ -162,8 +164,12 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         OnDialogueEnd?.Invoke();
-       
-        FindObjectOfType<MainMenuManager>().PlayGame();
+       if(playgame)
+        {
+            FindObjectOfType<MainMenuManager>().PlayGame();
+        }
+       else FindObjectOfType<MainMenuManager>().MainMenu();
+
     }
 }
 

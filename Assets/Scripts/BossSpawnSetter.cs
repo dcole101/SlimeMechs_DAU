@@ -9,6 +9,7 @@ public class BossSpawnSetter : MonoBehaviour
     public CapsuleCollider bosshitcollider;
     public GameObject babylocation;
     public GameObject explosion;
+    public GameObject bossPrefab;
 
     public float setDelay = 2f;
 
@@ -29,7 +30,11 @@ public class BossSpawnSetter : MonoBehaviour
         {
             bossController.spawnPosition = tileBoss.transform.position;
             bosshitcollider.center = tileBoss.transform.position;
-            babylocation.transform.position = tileBoss.transform.position;
+            bossPrefab.transform.position = tileBoss.transform.position;
+
+            Vector3 targetPos1 = tileBoss.transform.position;
+            targetPos1.y = 1.2f;
+            babylocation.transform.position = targetPos1;
 
 
             Vector3 targetPos = tileBoss.transform.position;

@@ -74,6 +74,10 @@ public class TarBabyNav : MonoBehaviour
     public Animator babyanimator;
     private bool isDead;
 
+    private bool fleePointSet;
+    public float walkPointRange = 10f;  // Range to search for flee points
+    private Vector3 fleePoint;
+
     void Start()
     {
         babyanimator = GetComponent<Animator>();
@@ -87,33 +91,69 @@ public class TarBabyNav : MonoBehaviour
 
     private void Update()
     {
-        if (player == null) return;
+        if (player == null || agent == null) return;
 
-        if(isDead == false)
+        if (isDead == false)
         {
             _updateTimer -= Time.deltaTime;
             if (_updateTimer <= 0f)
             {
                 _updateTimer = updateRate;
-                SetFleeDestination();
+                if (!fleePointSet) SearchFleePoint();
             }
+
+            Patrolling();
         }
-        
     }
 
-    private void SetFleeDestination()
+    private void Patrolling()
     {
-        // Direction from player to enemy (normalized)
-        Vector3 awayFromPlayer = (transform.position - player.position).normalized;
+        if (!fleePointSet) SearchFleePoint();
 
-        // Target point some distance away from player in that direction
-        Vector3 desiredPosition = player.position + awayFromPlayer * fleeDistance;
-         
-        // Keep y the same as current to avoid weird vertical offsets
-        desiredPosition.y = transform.position.y;
+        if (fleePointSet)
+        {
+            agent.SetDestination(fleePoint);
 
-        // Send enemy there via NavMesh
-        agent.SetDestination(desiredPosition);
+            Vector3 distanceToFleePoint = transform.position - fleePoint;
+
+            if (distanceToFleePoint.magnitude < 1f || !agent.hasPath)
+            {
+                fleePointSet = false;
+            }
+        }
+    }
+
+    private void SearchFleePoint()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            Vector3 awayFromPlayer = (transform.position - player.position).normalized;
+
+            float randomDistance = Random.Range(walkPointRange * 0.5f, walkPointRange);
+            Vector3 randomOffset = awayFromPlayer * randomDistance;
+
+            Vector3 randomPoint = new Vector3(
+                transform.position.x + randomOffset.x + Random.Range(-2f, 2f),
+                transform.position.y,
+                transform.position.z + randomOffset.z + Random.Range(-2f, 2f)
+            );
+
+            NavMeshHit hit;
+
+            if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
+            {
+                float distanceFromPlayer = Vector3.Distance(hit.position, player.position);
+                if (distanceFromPlayer > 5f) 
+                {
+                    fleePoint = hit.position;
+                    fleePointSet = true;
+                    return;
+                }
+            }
+        }
+
+        fleePointSet = false;
+        Debug.LogWarning("No valid flee point found away from player!");
     }
 
     public void TakeDamage(int damage)

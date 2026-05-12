@@ -4026,7 +4026,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 838912342}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: VictoryDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9882,8 +9882,12 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: JumpHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: SprintSpeed
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: AttackTimeout
@@ -10153,7 +10157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   attackDamage: 20
   attackPoint: {fileID: 1397095310}
-  attackRange: 4
+  attackRange: 4.5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -12001,7 +12005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e65a601054b8cec4793cc187dc34cfc2, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12587,7 +12591,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5910259825353488899, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: m_Speed
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910259825353488899, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910259825353488899, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5910259825353488899, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
+      propertyPath: m_WalkableMask
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7186215766805828927, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: boss
@@ -12611,9 +12627,14 @@ PrefabInstance:
       objectReference: {fileID: 2057474125}
     - target: {fileID: 7186215766805828927, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
       propertyPath: fleeDistance
-      value: 25
+      value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7186215766805828927, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
+      propertyPath: walkPointRange
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1339538544331959174, guid: b1c6d596c9eb0154b9acec0380beba5c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -13966,6 +13987,7 @@ MonoBehaviour:
   bosshitcollider: {fileID: 1112689248}
   babylocation: {fileID: 1927542982}
   explosion: {fileID: 227699584}
+  bossPrefab: {fileID: 1543516322}
   setDelay: 2
 --- !u!4 &2117086239
 Transform:

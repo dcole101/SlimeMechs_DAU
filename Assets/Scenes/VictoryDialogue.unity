@@ -3198,6 +3198,7 @@ MonoBehaviour:
   textBoxRect: {fileID: 702425995}
   spriteRect: {fileID: 1754440922}
   slideDuration: 0.3
+  playgame: 0
 --- !u!4 &1801393063
 Transform:
   m_ObjectHideFlags: 0

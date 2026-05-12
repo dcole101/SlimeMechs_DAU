@@ -34,6 +34,7 @@ public class EnemyAi : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
 
+
     [SerializeField] private Transform firePoint;
 
     private void Awake()
